@@ -1,0 +1,13 @@
+gallery
+	categories:
+		b&w
+		color
+		landscape
+		portrait
+		wildlife
+		nature
+		sea
+		water
+		animals
+		
+		

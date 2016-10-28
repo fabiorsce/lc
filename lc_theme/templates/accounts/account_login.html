@@ -1,0 +1,16 @@
+{% extends "accounts/account_form.html" %}
+{% load i18n %}
+{% block main %}
+<div style="min-height:400px;" id="login_form_id">
+	{% if request.user.is_authenticated %}
+	    <p style="text-align:center;margin-top:10px;">{% trans "You're already logged in. If you'd like to log in as a different user," %}<a href="{% url "logout" %}?next={{ request.path }}" class="sign-out"> Log out</a></p>
+	{% else %}
+	    {{ block.super }}
+	    {% url "signup" as signup_url %}
+	    <p id="p_login_signup">{% blocktrans with request.GET.next as next %}Don't have an account? <a href="{{ signup_url }}?next={{ next }}">Sign up</a>{% endblocktrans %}</p>
+	    {% url "mezzanine_password_reset" as password_reset_url %}
+	    {% url "profile_update" as profile_update_url %}
+	    {% blocktrans %}<p id="p_login_reset">Forgot password? <a href="{{ password_reset_url }}?next={{ profile_update_url }}">Reset it here</a></p>{% endblocktrans %}
+	{% endif %}
+</div>
+{% endblock %}

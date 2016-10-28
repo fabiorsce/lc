@@ -1,0 +1,324 @@
+{% extends "pages/page.html" %}
+{% load mezzanine_tags staticfiles %}
+{% block title_wrapper %}
+{% endblock %}
+{% block extra_css %}
+<!-- LIGHTBOX -->
+<link rel='stylesheet' href="{% static "lightbox-plugin/css/nchlightbox-1.3.css" %}">
+<!-- LIGHTBOX -->
+<!-- ISOTOPE -->
+<style>
+#div_grid_wrapper{
+	margin-left:1.25%;
+	margin-right:1.25%;
+	min-height: 500px;}
+.grid {	}
+.grid-sizer,
+.grid-item {
+	margin:0.25%;
+	width: 24.5%;
+	background: #000;}
+.grid-item img {	
+  	display: block;
+  	max-width: 100%;
+  	cursor: pointer;}
+.grid-item:hover img {
+	opacity: 0.9;
+	transition-delay: .15s;}
+#filter_wrapper{
+	color: #999;
+	margin-top: 0.5%;
+	display: block;
+	text-align:center;
+	margin-right:0.25% !important;
+	margin-left:0.25% !important;
+	overflow: hidden;}
+#color_filters{
+	margin-right: 3%;}
+#other_filters{}
+.button-group{
+	display: block !important;
+	float:right;}
+#quicksearch{
+	float: left;
+	display: block !important;
+	font-weight: lighter;
+	border: solid 1px #ccc !important;}
+#quicksearch:focus::-webkit-input-placeholder {
+    opacity: 0;}
+.button{
+	font-weight:lighter !important;
+	margin-left: 5px;
+	background: #fff;
+	border: none !important;
+	box-shadow: none ;}
+.button:hover{
+	outline: none !important;
+	background:#5993E5 !important;
+	color: #fff;}
+.is-checked{
+	outline: none !important;
+	background:#5993E5 !important;
+	color: #fff;}
+.filter_wrapper_class{
+	display: none !important;
+}
+@media (min-width: 1199px)  {
+	#quicksearch{
+		min-width: 250px;}
+}
+@media (max-width: 1199px)  {
+.row{
+		padding-left:0.15% !important;
+		padding-right:0.15% !important;}	
+}
+@media (max-width: 979px) {
+.row{
+padding-left:0.25% !important;
+padding-right:0.25% !important;}
+.button{
+	font-size: 80%;}
+#quicksearch{
+		font-size: 80%;}
+#color_filters{
+margin-right: 0;}
+}
+@media (max-width: 768px)  {
+	.button-group{
+		display: block !important;
+		padding: 0 !important;
+		margin: 0 !important;
+		float:left;}
+	#quicksearch{
+		width: 100%;}
+	#color_filters{
+		margin-top: 2px !important;
+		display: block !important;}
+	#other_filters{
+		margin-top: 2px !important;
+		display: block !important;
+	}
+}
+@media (min-width: 481px) and (max-width: 768px)  {
+	.row{
+	padding-left:0.5% !important;
+	padding-right:0.5% !important;}
+	.button{
+		font-size: 75%;
+		margin-left: 0;}
+	#quicksearch{
+		font-size: 75%;}
+	#color_filters{
+		float: left;}
+}
+@media (max-width: 480px) {
+	.row{
+		padding-left:1% !important;
+		padding-right:1% !important;}
+	.button{
+		font-size: 75%;
+		margin-left: 0;}
+	#quicksearch{
+		font-size: 75%;}
+	#other_filters{
+		float: left;}
+}
+</style>
+<!-- ISOTOPE -->
+{% endblock extra_css %}
+{% block main_wrapper %}
+<div class="col-md-{% block main_col_size %}none{% endblock %} {% block main_class %}{% endblock %}">
+	<div class="container-fullwidth">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row" style="margin:0 auto;">
+				{% block main %}
+					{% if not request.path|slice:":8" == '/gallery' %}
+						{{ block.super }}
+						<div id="div_grid_wrapper">
+							<!-- <button class="button_comments" onclick="$('#filter_wrapper').slideToggle({effect:'drop',duration :'300'}).toggleClass('filter_wrapper_class');"><span class="show_comment_span">Show Filters<i class="fa fa-comments-o" aria-hidden="true"></i></span></button> -->
+                            <div id="filter_wrapper">
+								<div id="filters">
+									<input type="text" id="quicksearch" placeholder="Search Photos..." />
+  									<div class="ui-group">
+									     <div class="button-group js-radio-button-group" data-filter-group="size" id="other_filters">
+											<button class="button is-checked" data-filter="">all</button>
+											<button class="button" data-filter=".landscape">landscape</button>
+											<button class="button" data-filter=".portrait">portrait</button>
+											<button class="button" data-filter=".wildlife">wildlife</button>
+											<button class="button" data-filter=".nature">nature</button>
+											<button class="button" data-filter=".people">people</button>
+											<button class="button" data-filter=".art">architecture</button>
+											<button class="button" data-filter=".macro">macro</button>
+											<button class="button" data-filter=".art">art</button>
+									    </div>
+									    <div class="button-group js-radio-button-group" data-filter-group="shape" id="color_filters">
+											<button class="button is-checked" data-filter="">all</button>
+											<button class="button" data-filter=".bw">b&w</button>
+											<button class="button" data-filter=".color">color</button>
+									    </div>
+									</div>
+								</div>
+                            </div>
+                            <div class="grid">
+                            	<div class="grid-sizer"></div>
+  								<div class="grid-item"></div>
+  								<div class="grid-item grid-item--width2"></div>
+                                <div class="isotope">                 	
+	       							{% with page.gallery.images.all as images %}
+										{% for image in images %}
+						       				<div class="grid-item image_gallery bw animal">
+			       								<span style="display:none;">{{ image.description }}</span>
+				                        		<a href="{{ image.file.url }}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
+					       							<img  src="{{ MEDIA_URL }}{% thumbnail image.file 0 0 image.quality 100 %}"><figcaption></figcaption>
+					       						</a>
+	       									</div>
+	       								{% endfor %}
+									{% endwith %}
+								</div>
+          					</div>
+                        </div>					
+					{% else %}
+						{{ block.super }}
+						<div id="div_grid_wrapper">
+							<!-- <button class="button_comments" onclick="$('#filter_wrapper').slideToggle({effect:'drop',duration :'300'}).toggleClass('filter_wrapper_class');"><span class="show_comment_span">Show Filters<i class="fa fa-comments-o" aria-hidden="true"></i></span></button> -->
+                            <div id="filter_wrapper">
+								<div id="filters">
+									<input type="text" id="quicksearch" placeholder="Search Photos..." />
+  									<div class="ui-group">
+									     <div class="button-group js-radio-button-group" data-filter-group="size" id="other_filters">
+											<button class="button is-checked" data-filter="">all</button>
+											<button class="button" data-filter=".landscape">landscape</button>
+											<button class="button" data-filter=".portrait">portrait</button>
+											<button class="button" data-filter=".wildlife">wildlife</button>
+											<button class="button" data-filter=".nature">nature</button>
+											<button class="button" data-filter=".people">people</button>
+											<button class="button" data-filter=".art">architecture</button>
+											<button class="button" data-filter=".macro">macro</button>
+											<button class="button" data-filter=".art">art</button>
+									    </div>
+									    <div class="button-group js-radio-button-group" data-filter-group="shape" id="color_filters">
+											<button class="button is-checked" data-filter="">all</button>
+											<button class="button" data-filter=".bw">b&w</button>
+											<button class="button" data-filter=".color">color</button>
+									    </div>
+									</div>
+								</div>
+                            </div>
+                            <div class="grid">
+                            	<div class="grid-sizer"></div>
+  								<div class="grid-item"></div>
+  								<div class="grid-item grid-item--width2"></div>
+  								<div class="isotope">                 	
+                                	<div class="grid-item image_gallery color landscape nature">
+                                		<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_1.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_1.jpg" %}"><figcaption></figcaption>
+			       						</a>
+		       						</div>
+	       							<div class="grid-item image_gallery color landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_2.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_2.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_3.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_3.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_9.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_9.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_8.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_8.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+								</div>
+          					</div>
+                        </div>
+					{% endif %}
+				{% endblock %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+{% block extra_js %}
+{{ block.super }}
+<!-- ISOTOPE -->
+<script src="{% static "isotope-docs/isotope.pkgd.min.js" %}"></script>
+<script>
+$(window).load(function() {
+  // quick search regex
+  var qsRegex;
+  var buttonFilter;
+  // init Isotope
+  var $container = $('.isotope').isotope({
+    itemSelector: '.grid-item',
+    layoutMode: 'masonry',
+    filter: function() {
+      console.log('filtering');
+      var $this = $(this);
+      var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+      var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
+      return searchResult && buttonResult;
+    }
+  });
+   // store filter for each group
+  var filters = {};
+  $('#filters').on( 'click', '.button', function() {
+    var $this = $(this);
+    // get group key
+    var $buttonGroup = $this.parents('.button-group');
+    var filterGroup = $buttonGroup.attr('data-filter-group');
+    // set filter for group
+    filters[ filterGroup ] = $this.attr('data-filter');
+    // combine filters
+    var filterValue = '';
+    for ( var prop in filters ) {
+      filterValue += filters[ prop ];
+    }
+    buttonFilter = filterValue;
+    // set filter for Isotope
+    $container.isotope();
+  });
+ 
+  // use value of search field to filter
+  var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+    qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+    $container.isotope();
+  }) );
+    // change is-checked class on buttons
+  $('.button-group').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.is-checked').removeClass('is-checked');
+      $( this ).addClass('is-checked');
+    });
+  });
+});
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  return function debounced() {
+    if ( timeout ) {
+      clearTimeout( timeout );
+    }
+    function delayed() {
+      fn();
+      timeout = null;
+    }
+    setTimeout( delayed, threshold || 100 );
+  };
+}
+</script>
+<!-- ISOTOPE -->
+{% endblock %}

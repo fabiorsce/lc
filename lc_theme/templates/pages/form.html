@@ -1,0 +1,53 @@
+{% extends "pages/page.html" %}
+{% load mezzanine_tags %}
+<div class="col-md-{% block main_col_size %}8{% endblock %}">
+{% block main %}
+    <div style="min-height:400px;" id="login_form_id">
+        {{ block.super }}
+        {% if request.GET.sent %}
+            {% editable page.form.response %}
+            {{ page.form.response|richtext_filters|safe }}
+            {% endeditable %}
+        {% else %}
+            {% with page.form as page_form %}
+            <!-- {% editable page_form.content %}
+            {{ page_form.content|richtext_filters|safe }}
+            {% endeditable %} -->
+            <!-- divider -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 id="login_id" style="padding-left:25px;padding-right:25px;"><hr class="{{ page.title }}"></h2>
+                </div>
+            </div>
+            <!-- end divider -->
+            {% endwith %}
+            {% errors_for form %}
+            <form class="mezzanine-form" method="post"{% if form.is_multipart %} enctype="multipart/form-data"{% endif %}>
+                {% fields_for form %}
+                <div class="form-actions">
+                    <input class="btn btn-primary btn-lg" type="submit" value="{{ page.form.button_text }}">
+                </div>
+            </form>
+        {% endif %}
+        <!-- divider -->
+        <div class="row">
+            <div class="col-lg-12">
+                <hr class="or_divider">
+            </div>
+        </div>
+        <!-- end divider -->
+        <p id="social_connect">Connect through Social media</p>
+        <ul class="social-menu" id="social-menu-id">
+            <li><i class="fa fa-google" aria-hidden="true" id="google_footer"></i></li>
+            <li><i class="fa fa-twitter" aria-hidden="true" id="twitter_footer"></i></li>
+            <li><i class="fa fa-facebook" aria-hidden="true" id="facebook_footer"></i></li>
+        </ul>
+    </div>
+{% endblock %}
+</div>
+{% block extra_js %}
+{{ block.super }}
+<script>
+$(function() {$('.mezzanine-form :input:visible:enabled:first').focus();});
+</script>
+{% endblock %}

@@ -1,0 +1,27 @@
+gallery functionality
+	add infinite scroll gallery
+	bind search results to gallery lightbox
+	
+	improve lightbox (change categories, search in lightbox)
+
+search box 
+	ajax search results
+	improve search for gallery
+	focus when search expands (not working in chrome)
+	
+blog
+	add second blog on same project
+	add infinite scroll to blog list
+
+accounts
+	facebook, twitter, google login
+	add checkbox subscribe to blog newsletter (mail chimp) when signing in
+	extra fields for Name, Last Name picture upload
+
+404 page not found template
+
+footer stick on bottom - not always but when content is not high enough
+
+disable hover on touch devices
+
+gallery img on hover darken

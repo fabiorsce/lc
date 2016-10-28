@@ -1,0 +1,155 @@
+{% load mezzanine_tags i18n %}
+{% if not request.path|slice:":7" == '/search' %} 
+    <form action="{% url "search" %}" class="navbar-form navbar-right" role="search" id="navbar_id" style="border:none !important;">
+        {% if search_model_choices %}
+            {% if search_model_choices|length == 1 %}
+            <input type="hidden" name="type" value="{{ search_model_choices.0.1 }}">
+            {% else %}
+            <div class="form-group">
+                <select class="form-control" name="type" id="search_filter">
+                    <option value="" class="option_class">{% trans "All" %}</option>
+                    {% for verbose_name, model in search_model_choices %}
+                    <option value="{{ model }}" class="option_class"
+                        {% if model == request.REQUEST.type  %}selected{% endif %}>
+                        {{ verbose_name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+        {% endif %}
+        <div class="form-group" id="form_group_id" style="display:none;">
+            <input class="form-control" placeholder="{% trans "Search..." %}" type="text" name="q" value="{{ request.REQUEST.q }}" id="form_control_id">
+        </div>
+        <i class="fa fa-search" aria-hidden="true" id="icon_search_expand"></i>
+        <button type="submit" class="search_button" id="search_button_id" aria-hidden="true" value="" style="display:none;">
+            <i class="fa fa-search" id="fa-search-id" aria-hidden="true"></i>
+        </button>
+    </form>
+<script>
+
+
+
+
+
+
+$('#icon_search_expand').on('click',function(){
+    if($('#form_group_id').css('display')!='none'){
+        $('#icon_search_expand').fadeIn(100, 'swing').hide();
+        $('.search_button').fadeIn(100, 'swing').siblings('div').hide();
+    }else if($('#icon_search_expand').css('display')!='none'){
+        $('#form_group_id').fadeIn(100, 'swing').siblings('div').hide();
+        $('input.form-control').focus();
+    }
+  if($('#form_group_id').css('display')!='none'){
+        $('#icon_search_expand').hide();
+        $('.search_button').fadeIn(100, 'swing');
+    }
+
+
+
+});
+</script>
+<script>
+$("body").on("click",function(e) { 
+    if( $(e.target).is('#form_group_id') 
+        || $(e.target).closest('#form_group_id').length) {
+    }
+    else {
+        if($('#form_group_id').css('display')!='none'){
+            $('#form_group_id').fadeIn(100, 'swing').hide();
+        }
+        if($('#form_group_id').css('display')=='none'){
+            $('.search_button').hide();
+            $('#icon_search_expand').fadeIn(100, 'swing');
+        }
+    }            
+});
+</script>
+{% else %}
+    <form action="{% url "search" %}" class="navbar-form navbar-right" role="search" id="navbar_id" style="border:none !important;">
+        {% if search_model_choices %}
+            {% if search_model_choices|length == 1 %}
+            <input type="hidden" name="type" value="{{ search_model_choices.0.1 }}">
+            {% else %}
+            <div class="form-group" id="form-group-select-id">
+                <select class="form-control" name="type" id="search_filter">
+                    <option value="" class="option_class">
+                        {% trans "All" %}
+                    </option>
+                    {% for verbose_name, model in search_model_choices %}
+                    <option value="{{ model }}" class="option_class"
+                        {% if model == request.REQUEST.type  %}selected{% endif %}>
+                        {{ verbose_name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            {% endif %}
+        {% endif %}
+        <div class="form-group" id="form_group_id">
+            <input class="form-control" placeholder="{% trans "Search..." %}" type="text" name="q" value="{{ request.REQUEST.q }}" id="form_control_id">
+        </div>
+        <button type="submit" class="search_button" id="search_button_id" aria-hidden="true" value="">
+            <i class="fa fa-search" id="fa-search-id" aria-hidden="true"></i>
+        </button>
+    </form>
+<style>
+#navbar_id{
+    margin-top:0px;
+}
+#form_group_id{
+    display: inline-block !important;
+}
+#content{
+    min-height: 700px;}
+#search_filter{
+    display: inline-block !important;
+    margin-right: 10px;
+    border: none;
+    box-shadow: none;
+    color:#5993E5 !important;
+    font-size:10px;}
+#search_filter option {
+display: inline-block !important;}
+#icon_search_expand{
+    display: none !important;}
+#search_button_id{
+    cursor:pointer;
+    font-size: 101%;
+    margin-top: 4px;
+    display: inline-block !important;}
+</style>
+{% endif %}
+<script>
+// $('body').click(function() {
+//     if($('#form_group_id').css('display')!='none'){
+//     $('.search_button').fadeIn(800, 'swing').siblings('div').hide();
+//     $('#search_button_id').css({
+//         'margin-top': '3px',
+//         'border-left': 'none'
+//     });   
+// }
+//  });
+//  $('#navbar_id').click(function(event){
+//      event.stopPropagation();
+//  });
+</script>
+<!-- <form action="{% url "search" %}" class="search_form" role="search">
+<div class="container" id="container_search">
+    <div class="row">
+        <div class="col-md-2">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Search" name="q" value="{{ request.REQUEST.q }}"/>
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form> -->

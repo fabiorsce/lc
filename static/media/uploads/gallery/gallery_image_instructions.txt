@@ -1,0 +1,3 @@
+gallery grid - 400x600 and 600x400
+
+gallery player - fancy box located_ static/fancybox…

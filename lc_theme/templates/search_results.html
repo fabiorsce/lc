@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load i18n future mezzanine_tags %}
+{% block title_wrapper %}
+{% endblock %}
+{% block meta_title %}{% trans "Search Results" %}{% endblock %}
+{% block title %}{% trans "Search Results" %}{% endblock %}
+{% block extra_head %}
+<meta name="robots" content="noindex">
+{% endblock %}
+{% block main %}
+	{% if results.paginator.count == 0 %}
+	<p style="text-align:center;margin-top:10px;">
+	{% blocktrans %}
+	No results found in <strong>{{ search_type }}</strong> matching your query <strong>{{ query }}</strong>
+	{% endblocktrans %}
+	</p>
+	{% else %}
+	<p style="text-align:center;margin-top:10px;">
+	{% blocktrans with start=results.start_index end=results.end_index total=results.paginator.count %}
+	<strong>{{ start }}</strong> - <strong>{{ end }}</strong> of <strong>{{ total }}</strong> results in <strong>{{ search_type }}</strong> for <strong>{{ query }}</strong>
+	{% endblocktrans %}
+	</p>
+	{% endif %}
+	    {% for result in results.object_list %}
+	    <div class="search_result_class">
+		    <h5 class="h5_search_class"><!-- {{ forloop.counter0|add:results.start_index }}) -->
+		        <a href="{{ result.get_absolute_url }}">{{ result }}</a>
+		    </h5> 
+		    {% if settings.BLOG_USE_FEATURED_IMAGE and result.featured_image %}
+		    	<a href="{{ result.get_absolute_url }}">
+		    		<img alt="" src="{{ MEDIA_URL }}{% thumbnail result.featured_image 144 81 %}">
+		    	</a>
+		    {% elif result.file %}
+		    	<a href="" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ result.description }}" data-info="extrainfo">
+					<img src="{{ MEDIA_URL }}{% thumbnail result.file 144 81 result.quality 100 %}">
+				</a>
+		    {% else %}
+	        	<span alt="" id="no_featured_image"></span>
+		    {% endif %}
+		    <p class="search_p">{{ result.description|truncatewords_html:20|safe }}</p>
+		    <a href="{{ result.get_absolute_url }}" class="search_a">{% trans "read more" %}</a>
+		</div>
+	    {% endfor %}
+	</div>
+	{% pagination_for results %}
+{% endblock %}

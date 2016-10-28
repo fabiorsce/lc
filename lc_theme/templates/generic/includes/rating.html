@@ -1,0 +1,148 @@
+{% load mezzanine_tags rating_tags i18n %}
+{% load staticfiles %}
+<!-- <span id="rating-{{ rating_object.id }}">
+    {% if rating_average %}
+    {{ rating_average|floatformat }}
+    {% endif %}
+</span> -->
+{% if not rated or request.user.is_authenticated %}
+<form id ="form_id" class="form-inline" role="form" method="post" action="{% url "rating" %}">
+    {% nevercache %}
+    {% csrf_token %}
+    {% endnevercache %}
+    <div class="radio radio-inline">
+        <select id="id_value" form="form_id" name="value" onchange="this.form.submit()" data-current-rating="{{ rating_average|floatformat }}">
+            <option value=""></option>
+            <option id="id_value_0" value="1">1</option>
+            <option id="id_value_1" value="2">2</option>
+            <option id="id_value_2" value="3">3</option>
+            <option id="id_value_3" value="4">4</option>
+            <option id="id_value_4" value="5">5</option>
+        </select>
+       {{ rating_form.content_type }}
+       {{ rating_form.object_pk }}
+       {{ rating_form.timestamp }}
+       {{ rating_form.security_hash }}
+    </div>
+</form>
+{% else %}
+<form id ="form_id" class="form-inline" role="form">
+<div class="radio radio-inline" id="disabled_rating" onmouseover="javascript:already_voted();" onmouseout="already_voted_hide();">
+        <select id="id_value" form="form_id" name="value" data-current-rating="{{ rating_average|floatformat }}" class="rating_read_only">
+            <option value=""></option>
+            <option id="id_value_0" value="1">1</option>
+            <option id="id_value_1" value="2">2</option>
+            <option id="id_value_2" value="3">3</option>
+            <option id="id_value_3" value="4">4</option>
+            <option id="id_value_4" value="5">5</option>
+        </select><div id="on_hover_id_rating">already rated</div>
+    </div>
+<script type="text/javascript">
+   $(function() {
+      $('#id_value').barrating({
+        theme: 'fontawesome-stars',
+        readonly: true
+      });
+   });
+</script>
+<script>
+function already_voted()
+{
+   var show = document.getElementById('on_hover_id_rating');
+   show.style.display = 'block';
+}
+</script>
+<script>
+function already_voted_hide()
+{
+   var hide = document.getElementById('on_hover_id_rating');
+   hide.style.display = 'none';
+}
+</script>
+</form>
+{% endif %}
+
+<script src="{% static 'jquery-bar-rating-master/dist/jquery.barrating.min.js' %}"></script>
+<script type="text/javascript">
+   $(function() {
+      $('#id_value').barrating({
+        theme: 'fontawesome-stars'
+      });
+   });
+</script>
+<!-- option select at load show current rating -->
+{% if rating_average|floatformat > "0" %} 
+   {% if rating_average|floatformat < "1.5" %} 
+<script>
+ var val = "1";
+    var sel = document.getElementById('id_value');
+    var opts = id_value.options;
+    for(var opt, j = 0; opt = opts[j]; j++) {
+        if(opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+        }
+    }
+</script>
+    {% endif %}
+{% endif %}
+{% if rating_average|floatformat >= "1.5" %} 
+   {% if rating_average|floatformat <= "2.5" %} 
+<script>
+ var val = "2";
+    var sel = document.getElementById('id_value');
+    var opts = id_value.options;
+    for(var opt, j = 0; opt = opts[j]; j++) {
+        if(opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+        }
+    }
+</script>
+    {% endif %}
+{% endif %}
+{% if rating_average|floatformat >= "2.5" %} 
+   {% if rating_average|floatformat <= "3.5" %} 
+<script>
+ var val = "3";
+    var sel = document.getElementById('id_value');
+    var opts = id_value.options;
+    for(var opt, j = 0; opt = opts[j]; j++) {
+        if(opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+        }
+    }
+</script>
+    {% endif %}
+{% endif %}
+{% if rating_average|floatformat >= "3.5" %} 
+   {% if rating_average|floatformat <= "4.5" %} 
+<script>
+ var val = "4";
+    var sel = document.getElementById('id_value');
+    var opts = id_value.options;
+    for(var opt, j = 0; opt = opts[j]; j++) {
+        if(opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+        }
+    }
+</script>
+    {% endif %}
+{% endif %}
+{% if rating_average|floatformat >= "4.5" %} 
+   {% if rating_average|floatformat <= "5" %} 
+<script>
+ var val = "5";
+    var sel = document.getElementById('id_value');
+    var opts = id_value.options;
+    for(var opt, j = 0; opt = opts[j]; j++) {
+        if(opt.value == val) {
+            sel.selectedIndex = j;
+            break;
+        }
+    }
+</script>
+    {% endif %}
+{% endif %}

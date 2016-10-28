@@ -1,0 +1,5 @@
+bgclose = true
+usecolor = true
+backlight = 000
+hashpath = img
+social = fb,tw

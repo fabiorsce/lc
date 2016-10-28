@@ -1,0 +1,47 @@
+{% load i18n mezzanine_tags comment_tags %}
+<button class="button_comments" onclick="$('#comments').slideToggle({effect:'drop',duration :'300'}).toggleClass('comments_class_hidden');"><span class="show_comment_span">{% blocktrans count comments_count=blog_post.comments_count %}{{ comments_count }} comment <i class="fa fa-comment-o" aria-hidden="true"></i>{% plural %}{{ comments_count }} comments <i class="fa fa-comments-o" aria-hidden="true"></i>{% endblocktrans %}</span></button><!-- <div class="on_hover_comments" id="on_hover_comments_id">asdasd</div> -->
+<div id="comments"><!-- if want to start with comments hidde add style="display:none;" -->
+{% if settings.COMMENTS_DISQUS_SHORTNAME %}
+{% include "generic/includes/disqus_comments.html" %}
+{% else %}
+<script>
+$(function() {
+    $('.reply').click(function() {
+        $('.comment-reply-form').hide();
+        $(this).siblings('.comment-reply-form').toggle();
+    });
+});
+</script>
+<style>.input_id_honeypot {display:none !important;}</style>
+{% comment_thread object_for_comments %}
+<!-- divider -->
+<div class="row">
+    <div class="col-lg-12">
+        <hr class="leave_comment_divider">
+    </div>
+</div>
+<!-- end divider -->
+<form method="post" id="comment" action="{{ comment_url }}#comment" >
+    {% if not request.POST.replied_to %}
+        {% fields_for posted_comment_form %}
+    {% else %}
+        {% fields_for unposted_comment_form %}
+    {% endif %}
+    <div class="form-actions">
+        <input class="btn btn-primary btn-lg" type="submit" value="{% trans "Comment" %}" id="button_comment">
+    </div>
+</form>
+{% endif %}
+</div>
+<script>
+var inputs = document.getElementsByTagName('input');
+    for (index = 0; index < inputs.length; ++index) {
+       inputs[index].setAttribute('placeholder',
+    inputs[index].getAttribute("name"));
+    }
+var textareas = document.getElementsByTagName('textarea');
+    for (index = 0; index < textareas.length; ++index) {
+       textareas[index].setAttribute('placeholder',
+    textareas[index].getAttribute("name"));
+    }  
+</script>

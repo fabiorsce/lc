@@ -1,0 +1,18 @@
+{% extends "accounts/account_form.html" %}
+{% load i18n %}
+{% block main %}
+<div style="min-height:400px;" id="login_form_id">
+	{% if request.user.is_authenticated %}
+	    <p>{% trans "You're already logged in. If you'd like to create a new account, log out first." %}<a href="{% url "logout" %}?next={{ request.path }}" class="sign-out"> Log out</a></p>
+	{% else %}
+	    {{ block.super }}
+	    {% url "login" as login_url %}
+	    <p id="p_login_signup">{% blocktrans with request.GET.next as next %}Already have an account? <a href="{{ login_url }}?next={{ next }}">Log in</a>{% endblocktrans %}</p>
+	    {% if settings.ACCOUNTS_APPROVAL_REQUIRED %}
+	    <p>{% trans "After signing up, your account will be reviewed for approval. You'll receive an email when your account is activated." %}</p>
+	    {% elif settings.ACCOUNTS_VERIFICATION_REQUIRED %}
+	    <p>{% trans "After signing up, you'll receive an email with a link you need to click, in order to activate your account." %}</p>
+	    {% endif %}
+	{% endif %}
+</div>
+{% endblock %}
