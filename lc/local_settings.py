@@ -5,7 +5,7 @@
 # have to be manually restarted because changes will not be noticed
 # immediately.
 
-DEBUG = True
+DEBUG = False
 
 # Make these unique, and don't share it with anybody.
 SECRET_KEY = ")=98qcwj$0t1hhnxouj3lu$xq(q4u41d5+!t-!(8v#au(eu8cq"
@@ -33,20 +33,20 @@ DATABASES = {
 ###################
 
 # Domains for public site
-# ALLOWED_HOSTS = [""]
+ALLOWED_HOSTS = ["104.131.158.208"]
 
 # These settings are used by the default fabfile.py provided.
 # Check fabfile.py for defaults.
 
-# FABRIC = {
-#     "DEPLOY_TOOL": "rsync",  # Deploy with "git", "hg", or "rsync"
-#     "SSH_USER": "",  # VPS SSH username
-#     "HOSTS": [""],  # The IP address of your VPS
-#     "DOMAINS": ALLOWED_HOSTS,  # Edit domains in ALLOWED_HOSTS
-#     "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
-#     "LOCALE": "en_US.UTF-8",  # Should end with ".UTF-8"
-#     "DB_PASS": "",  # Live database password
-#     "ADMIN_PASS": "",  # Live admin user password
-#     "SECRET_KEY": SECRET_KEY,
-#     "NEVERCACHE_KEY": NEVERCACHE_KEY,
-# }
+FABRIC = {
+     "DEPLOY_TOOL": "git",  # Deploy with "git", "hg", or "rsync"
+     "SSH_USER": "lc",  # VPS SSH username
+     "HOSTS": ["104.131.158.208"],  # The IP address of your VPS
+     "DOMAINS": ALLOWED_HOSTS,  # Edit domains in ALLOWED_HOSTS
+     "REQUIREMENTS_PATH": "requirements.txt",  # Project's pip requirements
+     "LOCALE": "en_US.UTF-8",  # Should end with ".UTF-8"
+     "DB_PASS": "lc",  # Live database password
+     "ADMIN_PASS": "admin",  # Live admin user password
+     "SECRET_KEY": SECRET_KEY,
+     "NEVERCACHE_KEY": NEVERCACHE_KEY,
+}
