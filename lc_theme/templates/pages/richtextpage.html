@@ -1,11 +1,18 @@
 {% extends "pages/page.html" %}
 {% load mezzanine_tags %}
 <div class="col-md-{% block main_col_size %}8{% endblock %}">
-{% block main %}{{ block.super }}
-<!-- {% editable page.richtextpage.content %}
-{{ page.richtextpage.content|richtext_filters|safe }}
-{% endeditable %} -->
-<h2 id ="about_id">{{ page.richtextpage.content|safe }}</h2>
+{% block main %}
+<div style="min-height:400px;" id="login_form_id">
+	{{ block.super }}
+	<!-- divider -->
+	<div class="row">
+	    <div class="col-lg-12">
+	        <h2 id="login_id" style="padding-left:25px;padding-right:25px;"><hr class="{{ page.richtextpage.title }}"></h2>
+	    </div>
+	</div>
+	<!-- end divider -->  
+	<p id ="about_id">{{ page.richtextpage.content|safe }}</p>     
+</div>
 {% endblock %}
 </div>
 {% block right_panel %}

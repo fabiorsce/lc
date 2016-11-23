@@ -1,8 +1,6 @@
 gallery functionality
 	add infinite scroll gallery
 	bind search results to gallery lightbox
-	
-	improve lightbox (change categories, search in lightbox)
 
 search box 
 	ajax search results
@@ -23,5 +21,3 @@ accounts
 footer stick on bottom - not always but when content is not high enough
 
 disable hover on touch devices
-
-gallery img on hover darken

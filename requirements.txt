@@ -9,7 +9,7 @@ grappelli-safe==0.4.2
 html5lib==0.9999999
 Mezzanine==4.1.0
 oauthlib==1.1.2
-Pillow==3.3.0
+Pillow==3.4.2
 pytz==2016.4
 requests==2.10.0
 requests-oauthlib==0.6.1

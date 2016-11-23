@@ -143,13 +143,13 @@ DATABASES = {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "lc",
+        "NAME": "",
         # Not used with sqlite3.
-        "USER": "lc",
+        "USER": "",
         # Not used with sqlite3.
-        "PASSWORD": "lc",
+        "PASSWORD": "",
         # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "localhost",
+        "HOST": "",
         # Set to empty string for default. Not used with sqlite3.
         "PORT": "",
     }
@@ -364,5 +364,11 @@ FORMS_USE_HTML5 = True
 # ACCOUNTS_VERIFICATION_REQUIRED = True
 #ACCOUNTS_APPROVAL_REQUIRED = True
 
-
+####################
+# SEARCH #
+####################
 SEARCH_MODEL_CHOICES = ('pages.Page', 'blog.BlogPost', 'galleries.GalleryImage')
+
+####################
+# GALLERY FIELDS #
+####################

@@ -20,10 +20,6 @@
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/style.css" %}">
 <link rel="stylesheet" href="{% static 'font-awesome-4.6.3/css/font-awesome.min.css' %}">
-<link rel="stylesheet" href="{% static 'jquery-bar-rating-master/dist/themes/fontawesome-stars.css' %}">
-<!-- <link rel="stylesheet" href="{% static "css/flexslider.css" %}"> -->
-<!-- <link rel="stylesheet" href="{% static "css/fancybox/jquery.fancybox.css" %}"> -->
-<!-- <link rel="stylesheet" href="{% static "skins/default.css" %}"> -->
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/rtl.css" %}">
 {% endif %}
@@ -35,10 +31,11 @@
 {% endifinstalled %}
 {% block extra_css %}{% endblock %}
 {% endcompress %}
+{% compress js %}
+{% block extra_js %}
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
-{% compress js %}
-{% block extra_js %}{% endblock %}
+{% endblock %}
 {% include "includes/footer_scripts.html" %}
 {% endcompress %}
 <!--[if lt IE 9]>
@@ -48,7 +45,7 @@
 {% block extra_head %}{% endblock %}
 </head>
 <body id="{% block body_id %}body{% endblock %}">
-	<div id="wrapper">
+	<div id="wrapper" class="wrapper_class">
 		<header>
 			<a class="logo" href="/" id="logo_id"><img src="{% static "img/logo.png" %}" alt="" id="logo_src"/></a>
 			<div class="navbar navbar-default navbar-static-top" role="navigation">
@@ -131,39 +128,34 @@
 					</div>
 				</div>
 			</section>
+			<div class="push"></div>
 		</div>
 		{% endblock %}
-		<footer class="footer">
-			<div class="container">
-				<div id="sub-footer">
-					<div class="row" id="footer_row">
-						<div class="col-lg-6">	
-							<div class="footer-menu">
-								{% page_menu "pages/menus/footer.html" %}
-							</div>
+	</div>
+	<footer class="footer">
+		<div class="container">
+			<div id="sub-footer">
+				<div class="row" id="footer_row">
+					<div class="col-lg-6">	
+						<div class="footer-menu">
+							{% page_menu "pages/menus/footer.html" %}
 						</div>
-						<div class="col-lg-6">	
-							<ul class="social-menu">
-								<li><i class="fa fa-google" aria-hidden="true" id="google_footer"></i></li>
-								<li><i class="fa fa-twitter" aria-hidden="true" id="twitter_footer"></i></li>
-								<li><i class="fa fa-facebook" aria-hidden="true" id="facebook_footer"></i></li>
-							</ul>
-						</div>
-						<div class="col-lg-12">
-							<div class="copyright">
-								<p>&copy; 2016 Light Capturing<span id="original_mark">®</span> All rights reserved.</p>
-							</div>
+					</div>
+					<div class="col-lg-6">	
+						<ul class="social-menu">
+							<li><i class="fa fa-google" aria-hidden="true" id="google_footer"></i></li>
+							<li><i class="fa fa-twitter" aria-hidden="true" id="twitter_footer"></i></li>
+							<li><i class="fa fa-facebook" aria-hidden="true" id="facebook_footer"></i></li>
+						</ul>
+					</div>
+					<div class="col-lg-12">
+						<div class="copyright">
+							<p>&copy; 2016 Light Capturing<span id="original_mark">®</span> All rights reserved.</p>
 						</div>
 					</div>
 				</div>
 			</div>
-		</footer>
-	</div>
-{% compress js %}
-<!-- LIGHTBOX -->
-<script src="{% static "lightbox-plugin/js/jquery.hammer.min.js" %}"></script>
-<script src="{% static "lightbox-plugin/js/jquery.nchlightbox-1.3.min.js" %}"></script>
-<!-- LIGHTBOX -->
-{% endcompress %}
+		</div>
+	</footer>
 </body>
 </html>

@@ -1,154 +1,53 @@
 {% extends "pages/page.html" %}
-{% load mezzanine_tags staticfiles %}
+{% load i18n  mezzanine_tags staticfiles%}
+{% load mezzanine_tags %}
 {% block title_wrapper %}
 {% endblock %}
+<div class="col-md-{% block main_col_size %}8{% endblock %}">
 {% block main %}
-<h1>Isotope - filtering with search field</h1>
-
-
-{% if not request.path|slice:":8" == '/gallery' %}
-                        {{ block.super }}
-                        <div id="div_grid_wrapper">
-                            <div id="filter_wrapper">
-                                <input type="text" class="quicksearch" placeholder="Search" />
-                            </div>
-                            <div class="grid">
-                                
-                                    {% with page.gallery.images.all as images %}
-                                        {% for image in images %}
-                                            <div "element-item transition metal " data-category="transition">
-                                                <div class="name" >{{ image.description }}</div>
-                                                    <a href="{{ image.file.url }}" class='nch-lightbox' rel='mygallery' class='nch-lightbox' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
-                                                        <img  src="{{ MEDIA_URL }}{% thumbnail image.file 0 0 image.quality 100 %}">
-                                                    </a>
-                                                </div> 
-                                        {% endfor %}
-                                    {% endwith %}
-                                
-                            </div>
-                        </div>                      
-                    {% else %}
-
-
-<p><input type="text" class="quicksearch" placeholder="Search" /></p>
-
-<div class="grid">
-  <div class="element-item transition metal " data-category="transition">
-    <div class="name" style="display:none;">Horse</div>
-    <div class="symbol" style="display:none;">Animal</div>
-    <div class="number" style="display:none;">b&w</div>
-    <a href="{% static "media/uploads/gallery/gallery_9.jpg" %}" class='nch-lightbox' rel='mygallery' class='nch-lightbox' data-duration="3000" data-title="Image9" data-info="extrainfo">
-                                            <img src="{% static "media/uploads/gallery/gallery_9.jpg" %}">
-                                        </a>
-</div>
-<div class="element-item transition metal " data-category="transition">
-    <div class="name" style="display:none;">view</div>
-    <div class="symbol" style="display:none;">landscape</div>
-    <div class="number" style="display:none;">color</div>
-    <div class="number" style="display:none;">field</div>
-    <a href="{% static "media/uploads/gallery/gallery_1.jpg" %}" class='nch-lightbox' rel='mygallery' class='nch-lightbox' data-duration="3000" data-title="Image9" data-info="extrainfo">
-                                            <img src="{% static "media/uploads/gallery/gallery_1.jpg" %}">
-                                        </a>
-</div>
-</div>
-
-
-
-
-
-
-
-
-<style>
-* { box-sizing: border-box; }
-
-body {
-  font-family: sans-serif;
-}
-
-/* ---- input ---- */
-
-input[type="text"] {
-  font-size: 20px;
-}
-
-/* ---- isotope ---- */
-
-.grid {
-  border: 1px solid #333;
-}
-
-/* clear fix */
-.grid:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
-/* ---- .element-item ---- */
-
-.element-item {
-  position: relative;
-  float: left;
-  width: 100px;
-  height: 100px;
-  margin: 5px;
-  padding: 10px;
-  background: #888;
-  color: #262524;
-}
-
-.element-item > * {
-  margin: 0;
-  padding: 0;
-}
-
-.element-item .name {
-  position: absolute;
-
-  left: 10px;
-  top: 60px;
-  text-transform: none;
-  letter-spacing: 0;
-  font-size: 12px;
-  font-weight: normal;
-}
-
-.element-item .symbol {
-  position: absolute;
-  left: 10px;
-  top: 0px;
-  font-size: 42px;
-  font-weight: bold;
-  color: white;
-}
-
-.element-item .number {
-  position: absolute;
-  right: 8px;
-  top: 5px;
-}
-
-.element-item .weight {
-  position: absolute;
-  left: 10px;
-  top: 76px;
-  font-size: 12px;
-}
-
-.element-item.alkali          { background: #F00; background: hsl(   0, 100%, 50%); }
-.element-item.alkaline-earth  { background: #F80; background: hsl(  36, 100%, 50%); }
-.element-item.lanthanoid      { background: #FF0; background: hsl(  72, 100%, 50%); }
-.element-item.actinoid        { background: #0F0; background: hsl( 108, 100%, 50%); }
-.element-item.transition      { background: #0F8; background: hsl( 144, 100%, 50%); }
-.element-item.post-transition { background: #0FF; background: hsl( 180, 100%, 50%); }
-.element-item.metalloid       { background: #08F; background: hsl( 216, 100%, 50%); }
-.element-item.diatomic        { background: #00F; background: hsl( 252, 100%, 50%); }
-.element-item.halogen         { background: #F0F; background: hsl( 288, 100%, 50%); }
-.element-item.noble-gas       { background: #F08; background: hsl( 324, 100%, 50%); }
-
-</style>
-
-
-
+{{ block.super }}
+    <div style="min-height:400px;" id="login_form_id">
+      <!-- divider -->
+      <div class="row">
+          <div class="col-lg-12">
+              <h2 id="login_id" style="padding-left:25px;padding-right:25px;"><hr class="{{ page.title }}"></h2>
+          </div>
+      </div>
+      <!-- end divider --> 
+      <div class="about_content">    
+      {{ page.richtextpage.content|safe }}
+      </div>
+      <br>
+        <img src="{% static "media/uploads/gallery/gallery_10.jpg" %}">
+      <br>
+      <br>
+      <br>
+      <section id="subscribe_posts">
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup">
+                <form action="//lightcapturing.us13.list-manage.com/subscribe/post?u=e13edcf43488969d205af82d6&amp;id=146c6de4f6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div id="mc_embed_signup_scroll">
+                        <div class="mc-field-group">
+                            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="Enter your email">
+                        </div>
+                        <div  id="subscribe_index_button_div">
+                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="btn btn-primary btn-lg">
+                        </div>
+                        <div id="mce-responses" class="clear">
+                            <div class="response" id="mce-error-response" style="display:none"></div>
+                            <div class="response" id="mce-success-response" style="display:none"></div>
+                        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_e13edcf43488969d205af82d6_146c6de4f6" tabindex="-1" value="">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+            <script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);
+            </script>
+            <!--End mc_embed_signup-->
+        </section>
+    </div>
 {% endblock %}
+</div>

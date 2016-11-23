@@ -107,21 +107,6 @@
 </div>
 {% endif %}
 {% endblock %}
-<!-- {% block blog_authors %}
-{% blog_authors as authors %}
-{% if authors %}
-<div class="widget">
-<h5 class="widgetheading">{% trans "Authors" %}</h5>
-<ul class="cat">
-{% for author in authors %}
-    <li><a href="{% url "blog_post_list_author" author.username %}"
-        >{{ author.get_full_name|default:author.username }} ({{ author.post_count }})</a>
-        </li>
-{% endfor %}
-</ul>
-</div>
-{% endif %}
-{% endblock %} -->
 {% block blog_months %}
 {% blog_months as months %}
 {% if months %}
@@ -145,6 +130,21 @@
          {% recent_comments %}
     </div>
 {% endblock %}
+<!-- {% block blog_authors %}
+{% blog_authors as authors %}
+{% if authors %}
+<div class="widget">
+<h5 class="widgetheading">{% trans "Authors" %}</h5>
+<ul class="cat">
+{% for author in authors %}
+    <li><a href="{% url "blog_post_list_author" author.username %}"
+        >{{ author.get_full_name|default:author.username }} ({{ author.post_count }})</a>
+        </li>
+{% endfor %}
+</ul>
+</div>
+{% endif %}
+{% endblock %} -->
 <!-- {% block blog_feeds %}
 <div class="widget">
 <h5 class="widgetheading">{% trans "Feeds" %}</h5>

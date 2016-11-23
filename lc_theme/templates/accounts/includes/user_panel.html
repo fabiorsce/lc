@@ -7,7 +7,6 @@
             <span class="profile_user"></span> {% trans "Update profile" %}</a> -->
     {% else %}
         <a href="{% url "profile_update" %}" class="profile_user">{{ request.user|username_or:"email" }}</a>
-   
     {% endif %}
     <a href="{% url "logout" %}?next={{ request.path }}" class="sign-out">
         <span class="fa fa-sign-out" aria-hidden="true" style="cursor:pointer !important;"></span></a><div class="on_hover">Sign Out</div>

@@ -1,0 +1,4 @@
+1 - Create a droplet with ubuntu and django (one click images), with ssh keys.
+2 - Drop the database schema and create a new one empty.
+3 - Configure the files lc/local_settings.py and lc/settings.py. Put the information about databases.
+

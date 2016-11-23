@@ -5,6 +5,7 @@
 {% block body_id %}account{% endblock %}
 {% block title_wrapper %}
 {% endblock %}
+<div class="col-md-{% block main_col_size %}8{% endblock %}">
 {% block main %}
 <div style="min-height:400px;" id="login_form_id">
 	{% errors_for form %}
@@ -32,3 +33,4 @@ var inputs = document.getElementsByTagName('input');
     }  
 </script>
 {% endblock %}
+</div>
