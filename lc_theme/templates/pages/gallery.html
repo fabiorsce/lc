@@ -4,7 +4,7 @@
 {% endblock %}
 {% block extra_css %}
 <!-- LIGHTBOX -->
-<link rel='stylesheet' href="{% static "lightbox-plugin/css/nchlightbox-1.3.css" %}">
+<link rel='stylesheet' href="{% static "lightbox-plugin/css/nchlightbox-1.3.min.css" %}">
 <!-- LIGHTBOX -->
 <!-- ISOTOPE -->
 <style>
@@ -164,24 +164,18 @@ margin-right: 0;}
                             	<div class="grid-sizer"></div>
   								<div class="grid-item"></div>
   								<div class="grid-item grid-item--width2"></div>
-                                <div class="isotope"></div>
-                                <script>
-									{% with page.gallery.images.all as images %}
-										var images=[
+                                <div class="isotope">                 	
+	       							{% with page.gallery.images.all as images %}
 										{% for image in images %}
-											{
-												link		: '{{ image.file.url }}',
-												src			: '{{ MEDIA_URL }}{% thumbnail image.file 0 0 image.quality 100 %}',
-												title		: '{{ image.description }}',
-												filters		: 'bw,animal',
-												description	: '{{ image.description }}',
-												extrainfo	: 'extrainfo'
-											},
+						       				<div class="grid-item image_gallery bw animal">
+			       								<span style="display:none;">{{ image.description }}</span>
+				                        		<a href="{{ image.file.url }}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
+					       							<img  src="{{ MEDIA_URL }}{% thumbnail image.file 0 0 image.quality 100 %}"><figcaption></figcaption>
+					       						</a>
+	       									</div>
 	       								{% endfor %}
-											''
-											];
-									{% endwith %}    
-									</script>
+									{% endwith %}
+								</div>
           					</div>
                         </div>					
 					{% else %}
@@ -246,6 +240,156 @@ margin-right: 0;}
 		                        			<img src="{% static "media/uploads/gallery/gallery_8.jpg" %}"><figcaption></figcaption>
 			       						</a>
 	       							</div>
+	       							<div class="grid-item image_gallery bw landscape nature">
+                                		<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_4.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_4.jpg" %}"><figcaption></figcaption>
+			       						</a>
+		       						</div>
+	       							<div class="grid-item image_gallery color landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_5.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_5.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_6.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_6.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_7.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_7.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_10.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_10.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery color landscape nature">
+                                		<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_1.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_1.jpg" %}"><figcaption></figcaption>
+			       						</a>
+		       						</div>
+	       							<div class="grid-item image_gallery color landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_2.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_2.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_3.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_3.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_9.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_9.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_8.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_8.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape nature">
+                                		<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_4.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_4.jpg" %}"><figcaption></figcaption>
+			       						</a>
+		       						</div>
+	       							<div class="grid-item image_gallery color landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_5.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_5.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_6.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_6.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_7.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_7.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_10.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_10.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery color landscape nature">
+                                		<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_1.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_1.jpg" %}"><figcaption></figcaption>
+			       						</a>
+		       						</div>
+	       							<div class="grid-item image_gallery color landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_2.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_2.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_3.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_3.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_9.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_9.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_8.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_8.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape nature">
+                                		<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_4.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_4.jpg" %}"><figcaption></figcaption>
+			       						</a>
+		       						</div>
+	       							<div class="grid-item image_gallery color landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_5.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_5.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">view</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_6.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_6.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw landscape">
+	       								<span style="display:none;">nature</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_7.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_7.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
+	       							<div class="grid-item image_gallery bw animal">
+	       								<span style="display:none;">horse</span>
+		                        		<a href="{% static "media/uploads/gallery/gallery_10.jpg" %}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="Image1" data-info="extrainfo">
+		                        			<img src="{% static "media/uploads/gallery/gallery_10.jpg" %}"><figcaption></figcaption>
+			       						</a>
+	       							</div>
 								</div>
           					</div>
                         </div>
@@ -256,131 +400,79 @@ margin-right: 0;}
 		</div>
 	</div>
 </div>
-
+{% endblock %}
+{% block extra_js %}
+{{ block.super }}
 <!-- LIGHTBOX -->
 <script src="{% static "lightbox-plugin/js/jquery.hammer.min.js" %}"></script>
 <script src="{% static "lightbox-plugin/js/jquery.nchlightbox-1.3.min.js" %}"></script>
 <!-- LIGHTBOX -->
 <!-- ISOTOPE -->
 <script src="{% static "isotope-docs/isotope.pkgd.min.js" %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/3.1.8/imagesloaded.pkgd.min.js"></script>
 <script>
-	//if(!images) images=[];
-	var grid_template='<div class="grid-item image_gallery {filters}">\
-							<span style="display:none;">{description}</span>\
-							<a href="{src}" class="nch-lightbox" rel="mygallery" data-duration="3000" data-title="{title}" data-info="{extrainfo}">\
-								<img src="{src}"><figcaption></figcaption>\
-							</a>\
-						</div>';
-	
-	$(window).load(function() {
-		console.log(images);
-		$.fn.revealItems = function($items){
-
-			var iso = this.data('isotope');
-			var itemSelector = iso.options.itemSelector;
-			$items.hide();
-			$(this).append($items);
-			$items.imagesLoaded().progress(function(imgLoad, image){
-				var $item = $(image.img).parents(itemSelector);
-				$item.show();
-				iso.appended($item);
-				$container.isotope();
-			});
-			$container.find('.nch-lightbox').nchlightbox();
-
-			return this;
-		}
-		var total_loaded=0;
-		function getItmes(){
-			var items = '';
-			
-			var new_images = images.slice(total_loaded, total_loaded+2);
-			console.log(total_loaded+' '+new_images.length);
-			if(new_images.length){
-				for(var i=total_loaded; i < total_loaded+new_images.length; i++){
-					if(images[i].src && images[i].src!=''){
-						items += grid_template.replace(/{src}/gi, images[i].src).replace('{filters}', images[i].filters.split(',').join(' ')).replace('{description}', images[i].description).replace('{title}', images[i].title).replace('{extrainfo}', images[i].extrainfo);
-					}
-				}
-				total_loaded+=new_images.length;
-			}
-			return $(items);
-		}
-		
-		function loadmore(e){
-			//alert('s');
-			if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 100) {
-				console.log('scrolled');
-				$container.revealItems(getItmes());
-			}
-		}
-		
-	  // quick search regex
-	  var qsRegex;
-	  var buttonFilter;
-	  // init Isotope
-	  var $container = $('.isotope').isotope({
-		itemSelector: '.grid-item',
-		layoutMode: 'masonry',
-		filter: function() {
-		  var $this = $(this);
-		  var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
-		  var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
-		  return searchResult && buttonResult;
-		}
-	  });
-		
-	   // store filter for each group
-	  var filters = {};
-	  $('#filters').on( 'click', '.button', function() {
-		var $this = $(this);
-		// get group key
-		var $buttonGroup = $this.parents('.button-group');
-		var filterGroup = $buttonGroup.attr('data-filter-group');
-		// set filter for group
-		filters[ filterGroup ] = $this.attr('data-filter');
-		// combine filters
-		var filterValue = '';
-		for ( var prop in filters ) {
-		  filterValue += filters[ prop ];
-		}
-		buttonFilter = filterValue;
-		// set filter for Isotope
-		$container.isotope();
-	  });
-
-	  // use value of search field to filter
-	  var $quicksearch = $('#quicksearch').keyup( debounce( function() {
-		qsRegex = new RegExp( $quicksearch.val(), 'gi' );
-		$container.isotope();
-	  }) );
-		// change is-checked class on buttons
-	  $('.button-group').each( function( i, buttonGroup ) {
-		var $buttonGroup = $( buttonGroup );
-		$buttonGroup.on( 'click', 'button', function() {
-		  $buttonGroup.find('.is-checked').removeClass('is-checked');
-		  $( this ).addClass('is-checked');
-		});
-	  });
-	  $container.revealItems(getItmes());
-		$(window).scroll(loadmore).scroll();
-	});
-	
-	// debounce so filtering doesn't happen every millisecond
-	function debounce( fn, threshold ) {
-	  var timeout;
-	  return function debounced() {
-		if ( timeout ) {
-		  clearTimeout( timeout );
-		}
-		function delayed() {
-		  fn();
-		  timeout = null;
-		}
-		setTimeout( delayed, threshold || 100 );
-	  };
-	}
+$(window).load(function() {
+  // quick search regex
+  var qsRegex;
+  var buttonFilter;
+  // init Isotope
+  var $container = $('.isotope').isotope({
+    itemSelector: '.grid-item',
+    layoutMode: 'masonry',
+    filter: function() {
+      console.log('filtering');
+      var $this = $(this);
+      var searchResult = qsRegex ? $this.text().match( qsRegex ) : true;
+      var buttonResult = buttonFilter ? $this.is( buttonFilter ) : true;
+      return searchResult && buttonResult;
+    }
+  });
+   // store filter for each group
+  var filters = {};
+  $('#filters').on( 'click', '.button', function() {
+    var $this = $(this);
+    // get group key
+    var $buttonGroup = $this.parents('.button-group');
+    var filterGroup = $buttonGroup.attr('data-filter-group');
+    // set filter for group
+    filters[ filterGroup ] = $this.attr('data-filter');
+    // combine filters
+    var filterValue = '';
+    for ( var prop in filters ) {
+      filterValue += filters[ prop ];
+    }
+    buttonFilter = filterValue;
+    // set filter for Isotope
+    $container.isotope();
+  });
+ 
+  // use value of search field to filter
+  var $quicksearch = $('#quicksearch').keyup( debounce( function() {
+    qsRegex = new RegExp( $quicksearch.val(), 'gi' );
+    $container.isotope();
+  }) );
+    // change is-checked class on buttons
+  $('.button-group').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.is-checked').removeClass('is-checked');
+      $( this ).addClass('is-checked');
+    });
+  });
+});
+// debounce so filtering doesn't happen every millisecond
+function debounce( fn, threshold ) {
+  var timeout;
+  return function debounced() {
+    if ( timeout ) {
+      clearTimeout( timeout );
+    }
+    function delayed() {
+      fn();
+      timeout = null;
+    }
+    setTimeout( delayed, threshold || 100 );
+  };
+}
 </script>
-{% endblock %}
 <!-- ISOTOPE -->
+{% endblock %}

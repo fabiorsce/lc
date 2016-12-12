@@ -10,16 +10,26 @@
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
-<link rel="icon" type= "favicon/png" href="{% static "img/fav3.ico" %}" />
+<link rel="icon" type= "favicon/png" href="{% static "img/fav.ico" %}" />
 {% ifinstalled mezzanine.blog %}
 <!-- <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}"> -->
 {% endifinstalled %}
 {% compress css %}
 <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
-<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-<link rel="stylesheet" href="{% static "css/style.css" %}">
-<link rel="stylesheet" href="{% static 'font-awesome-4.6.3/css/font-awesome.min.css' %}">
+<!-- <link rel="stylesheet" href="{% static "css/mezzanine.min.css" %}"> -->
+<!-- <link rel="stylesheet" href="{% static "css/style.css" %}"> -->
+<style>
+@font-face{font-family:'Noto Serif';font-style:normal;font-weight:400;src:local('Noto Serif'),local('NotoSerif'),url(http://fonts.gstatic.com/s/notoserif/v4/eCpfeMZI7q4jLksXVRWPQ73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff')}@font-face{font-family:'Noto Serif';font-style:normal;font-weight:700;src:local('Noto Serif Bold'),local('NotoSerif-Bold'),url(http://fonts.gstatic.com/s/notoserif/v4/lJAvZoKA5NttpPc9yc6lPXbFhgvWbfSbdVg11QabG8w.woff) format('woff')}@font-face{font-family:'Noto Serif';font-style:italic;font-weight:400;src:local('Noto Serif Italic'),local('NotoSerif-Italic'),url(http://fonts.gstatic.com/s/notoserif/v4/HQXBIwLHsOJCNEQeX9kNz6RDOzjiPcYnFooOUGCOsRk.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:300;src:local('Open Sans Light'),local('OpenSans-Light'),url(http://fonts.gstatic.com/s/opensans/v13/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:400;src:local('Open Sans'),local('OpenSans'),url(http://fonts.gstatic.com/s/opensans/v13/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:600;src:local('Open Sans Semibold'),local('OpenSans-Semibold'),url(http://fonts.gstatic.com/s/opensans/v13/MTP_ySUJH_bn48VBG8sNSqRDOzjiPcYnFooOUGCOsRk.woff) format('woff')}@font-face{font-family:'Open Sans';font-style:normal;font-weight:700;src:local('Open Sans Bold'),local('OpenSans-Bold'),url(http://fonts.gstatic.com/s/opensans/v13/k3k702ZOKiLJc3WVjuplzKRDOzjiPcYnFooOUGCOsRk.woff) format('woff')}
+</style>
+<style>
+.com{color:#93a1a1}.lit{color:#195f91}.clo,.opn,.pun{color:#93a1a1}.fun{color:#dc322f}.atv,.str{color:#D14}.kwd,.prettyprint .tag{color:#1e347b}.atn,.dec,.typ,.var{color:teal}.pln{color:#48484c}.prettyprint{padding:8px;background-color:#f7f7f9;border:1px solid #e1e1e8}.prettyprint.linenums{-webkit-box-shadow:inset 40px 0 0 #fbfbfc,inset 41px 0 0 #ececf0;-moz-box-shadow:inset 40px 0 0 #fbfbfc,inset 41px 0 0 #ececf0;box-shadow:inset 40px 0 0 #fbfbfc,inset 41px 0 0 #ececf0}ol.linenums{margin:0 0 0 33px}ol.linenums li{padding-left:12px;color:#bebec5;line-height:20px;text-shadow:0 1px 0 #fff}
+</style>
+<link rel="stylesheet" href="{% static "css/custom-fonts.min.css" %}">
+<!-- <link rel="stylesheet" href="{% static "css/overwrite.min.css" %}"> -->
+<!-- <link rel="stylesheet" href="{% static "css/animate.min.css" %}">-->
+<!-- <link rel="stylesheet" href="{% static "font-awesome-4.7-1.0/css/font-awesome.min.css" %}"> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/rtl.css" %}">
 {% endif %}
@@ -34,7 +44,7 @@
 {% compress js %}
 {% block extra_js %}
 <script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
 {% endblock %}
 {% include "includes/footer_scripts.html" %}
 {% endcompress %}
@@ -47,7 +57,7 @@
 <body id="{% block body_id %}body{% endblock %}">
 	<div id="wrapper" class="wrapper_class">
 		<header>
-			<a class="logo" href="/" id="logo_id"><img src="{% static "img/logo.png" %}" alt="" id="logo_src"/></a>
+			<a class="logo" href="/" id="logo_id"><img src="{% static "img/logo.png" %}" alt="" id="logo_src" width="375" height="159"/></a>
 			<div class="navbar navbar-default navbar-static-top" role="navigation">
 				<div class="container-fullwidth"  style="margin-top:-2px;">
 					<div class="navbar-header">

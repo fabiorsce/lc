@@ -7,7 +7,7 @@
 {% endblock %}
 {% block extra_css %}
 <!-- KEN BURNS -->
-<link rel="stylesheet" href="{% static "css/ken-burns.css" %}">
+<link rel="stylesheet" href="{% static "css/ken-burns.min.css" %}">
 <!-- KEN BURNS -->
 {% endblock extra_css %}
 {% block main_wrapper %}
@@ -21,28 +21,31 @@
 						    <li data-target="#carousel-example" data-slide-to="02"></li>
 						    <li data-target="#carousel-example" data-slide-to="03"></li>
 						    <li data-target="#carousel-example" data-slide-to="04"></li>
+						    <li data-target="#carousel-example" data-slide-to="05"></li>
+						    <li data-target="#carousel-example" data-slide-to="06"></li>
+						    <li data-target="#carousel-example" data-slide-to="07"></li>
 					  	</ol>
 			            <div class="carousel-inner" >
 						  	<div class="item active">
-						      <a href="#"><img src="{% static "media/uploads/slider/1.jpg" alt="slider 01" %}"/></a>	    
+						      <a href="#"><img src="{% static "media/uploads/slider/1.jpg" alt="slider 01" %}" width="2880" height="1080"/></a>
 						    </div>
 						    <div class="item">
-						      <a href="#"><img src="{% static "media/uploads/slider/2.jpg" alt="slider 02" %}"/></a>
+						      <a href="#"><img src="{% static "media/uploads/slider/2.jpg" alt="slider 02" %}" width="2880" height="1080"/></a>
 						    </div>
 						    <div class="item">
-						      <a href="#"><img src="{% static "media/uploads/slider/3.jpg" alt="slider 03" %}"/></a>
+						      <a href="#"><img src="{% static "media/uploads/slider/3.jpg" alt="slider 03" %}" width="2880" height="1080"/></a>
 						    </div>
 						    <div class="item">
-						      <a href="#"><img src="{% static "media/uploads/slider/4.jpg" alt="slider 04" %}"/></a>
+						      <a href="#"><img src="{% static "media/uploads/slider/4.jpg" alt="slider 04" %}" width="2880" height="1080"/></a>
 						    </div>
 						    <div class="item">
-						      <a href="#"><img src="{% static "media/uploads/slider/5.jpg" alt="slider 05" %}"/></a>
+						      <a href="#"><img src="{% static "media/uploads/slider/5.jpg" alt="slider 05" %}" width="2880" height="1080"/></a>
 						    </div>
 						    <div class="item">
-						      <a href="#"><img src="{% static "media/uploads/slider/6.jpg" alt="slider 06" %}"/></a>
+						      <a href="#"><img src="{% static "media/uploads/slider/6.jpg" alt="slider 06" %}" width="2880" height="1080"/></a>
 						    </div>
 						    <div class="item">
-						      <a href="#"><img src="{% static "media/uploads/slider/7.jpg" alt="slider 07" %}"/></a>
+						      <a href="#"><img src="{% static "media/uploads/slider/7.jpg" alt="slider 07" %}" width="2880" height="1080"/></a>
 						    </div>
 						</div>
 						<a class="left carousel-control" href="#carousel-example" data-slide="prev">
@@ -134,10 +137,11 @@
 									</div>
 								</form>
 							</div>
-							<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
-							<script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);
-							</script>
+							<script type='text/javascript' defer='defer' src='{% static "js/mc-validate.js" %}'></script>
 							<!--End mc_embed_signup-->
+							<script type='text/javascript' defer='defer'>
+								(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);
+							</script>
 						</section>
 					</div>
 				</div>

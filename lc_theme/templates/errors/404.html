@@ -1,18 +1,21 @@
 {% extends "base.html" %}
-
-{% load i18n %}
-
+{% load i18n staticfiles %}
 {% block meta_title %}
 {% trans "Page not found" %}
 {% endblock %}
-
 {% block title %}
 {% trans "Page not found" %}
 {% endblock %}
-
+<div class="col-md-{% block main_col_size %}8{% endblock %}">
 {% block main %}
-<div class="panel panel-danger">
-	<div class="panel-heading"><h3 class="panel-title">{% trans "Page not found" %}</h3></div>
-	<div class="panel-body">{% trans "The page you requested does not exist." %}</div>
-</div>
+	<div style="min-height:400px;" id="login_form_id">
+		<div style="margin:0 auto;width:320px;">
+			<img class="img_slider" src="{% static "img/shutter_404.png" alt="shutter_404" %}" width="320" height="320"/>
+		</div>
+		<br>
+		<br>
+		<div class="panel-heading" style="text-align:center;"><h2 class="panel-title" style="color:#b30000;">{% trans "Page not found" %}</h2></div>
+		<div class="panel-body" style="text-align:center;">{% trans "The page you requested does not exist. Go back to " %}<a href="/">lightcapturing.com.</a></div>		
+	</div>
 {% endblock %}
+</div>

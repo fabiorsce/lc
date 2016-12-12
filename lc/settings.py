@@ -90,7 +90,12 @@ USE_MODELTRANSLATION = False
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS=['*']
+
+# Make these unique, and don't share it with anybody.
+SECRET_KEY = ")=98qcwj$0t1hhnxouj3lu$xq(q4u41d5+!t-!(8v#au(eu8cq"
+NEVERCACHE_KEY = "4(*ap4$an4!+tj)m952z_utt2=ksjg^rfxo+-xl57s(snl9zrx"
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -143,13 +148,13 @@ DATABASES = {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "",
+        "NAME": "lc",
         # Not used with sqlite3.
-        "USER": "",
+        "USER": "lc",
         # Not used with sqlite3.
-        "PASSWORD": "",
+        "PASSWORD": "lc",
         # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "",
+        "HOST": "localhost",
         # Set to empty string for default. Not used with sqlite3.
         "PORT": "",
     }
@@ -169,6 +174,8 @@ PROJECT_ROOT = BASE_DIR = os.path.dirname(PROJECT_APP_PATH)
 # the name of the directory the project is in to try and use something
 # project specific.
 CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
+
+COMPRESS_ENABLED=False
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -315,15 +322,15 @@ OPTIONAL_APPS = (
 # local_settings has full access to everything defined in this module.
 # Also force into sys.modules so it's visible to Django's autoreload.
 
-f = os.path.join(PROJECT_APP_PATH, "local_settings.py")
-if os.path.exists(f):
-    import sys
-    import imp
-    module_name = "%s.local_settings" % PROJECT_APP
-    module = imp.new_module(module_name)
-    module.__file__ = f
-    sys.modules[module_name] = module
-    exec(open(f, "rb").read())
+#f = os.path.join(PROJECT_APP_PATH, "local_settings.py")
+#if os.path.exists(f):
+#    import sys
+#    import imp
+#    module_name = "%s.local_settings" % PROJECT_APP
+#    module = imp.new_module(module_name)
+#    module.__file__ = f
+#    sys.modules[module_name] = module
+#    exec(open(f, "rb").read())
 
 
 ####################
