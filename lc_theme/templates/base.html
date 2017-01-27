@@ -6,7 +6,7 @@
 	<meta name="robots" content="noindex" content="nofollow">
 <!-- NOINDEX -->
 <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
 <meta name="description" content="{% block meta_description %}{% endblock %}">
 <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
@@ -48,16 +48,14 @@
 {% endblock %}
 {% include "includes/footer_scripts.html" %}
 {% endcompress %}
-<!--[if lt IE 9]>
 <script src="{% static "js/html5shiv.js" %}"></script>
 <script src="{% static "js/respond.min.js" %}"></script>
-<![endif]-->
 {% block extra_head %}{% endblock %}
 </head>
 <body id="{% block body_id %}body{% endblock %}">
 	<div id="wrapper" class="wrapper_class">
 		<header>
-			<a class="logo" href="/" id="logo_id"><img src="{% static "img/logo.png" %}" alt="" id="logo_src" width="375" height="159"/></a>
+			<a class="logo" href="/" id="logo_id"><img src="{% static "img/logo2.png" %}" srcset="{% static 'img/logo2.png' %} 375w, {% static 'img/logo.png' %} 970w" alt="logo" id="logo_src" width="375" height="159"/></a>
 			<div class="navbar navbar-default navbar-static-top" role="navigation">
 				<div class="container-fullwidth"  style="margin-top:-2px;">
 					<div class="navbar-header">

@@ -2,6 +2,24 @@
 {% load mezzanine_tags staticfiles %}
 {% block title_wrapper %}
 {% endblock %}
+{% block extra_head %}
+	{{ block.super }}
+	
+	<script src="/static/js/jquery.unveil.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+		  //$("img").unveil(800);
+
+		  $("img").unveil(800, function() {
+			  $(this).load(function() {
+				$("#id_btn_all").click();
+			  });
+		  });
+
+		});
+	</script>
+        
+{% endblock %}
 {% block extra_css %}
 <!-- LIGHTBOX -->
 <link rel='stylesheet' href="{% static "lightbox-plugin/css/nchlightbox-1.3.min.css" %}">
@@ -142,7 +160,7 @@ margin-right: 0;}
 									<input type="text" id="quicksearch" placeholder="Search Photos..." />
   									<div class="ui-group">
 									     <div class="button-group js-radio-button-group" data-filter-group="size" id="other_filters">
-											<button class="button is-checked" data-filter="">all</button>
+											<button id="id_btn_all"class="button is-checked" data-filter="">all</button>
 											<button class="button" data-filter=".landscape">landscape</button>
 											<button class="button" data-filter=".portrait">portrait</button>
 											<button class="button" data-filter=".wildlife">wildlife</button>
@@ -164,13 +182,14 @@ margin-right: 0;}
                             	<div class="grid-sizer"></div>
   								<div class="grid-item"></div>
   								<div class="grid-item grid-item--width2"></div>
-                                <div class="isotope">                 	
+                                <div id="id_images_grid" class="isotope">                 	
 	       							{% with page.gallery.images.all as images %}
 										{% for image in images %}
-						       				<div class="grid-item image_gallery bw animal">
+						       				<div class="grid-item image_gallery color people">
 			       								<span style="display:none;">{{ image.description }}</span>
 				                        		<a href="{{ image.file.url }}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
-					       							<img  src="{{ MEDIA_URL }}{% thumbnail image.file 0 0 image.quality 100 %}"><figcaption></figcaption>
+					       							<img src="/static/img/loading.gif" data-src="{{image.file.url}}" width="{{ image.width }}" height="{{ image.height }}">
+												<figcaption></figcaption>
 					       						</a>
 	       									</div>
 	       								{% endfor %}
