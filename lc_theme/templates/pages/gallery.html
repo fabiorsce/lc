@@ -185,7 +185,7 @@ margin-right: 0;}
                                 <div id="id_images_grid" class="isotope">                 	
 	       							{% with page.gallery.images.all as images %}
 										{% for image in images %}
-						       				<div class="grid-item image_gallery color people">
+						       				<div class="grid-item image_gallery {{ image.description }}">
 			       								<span style="display:none;">{{ image.description }}</span>
 				                        		<a href="{{ image.file.url }}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
 					       							<img src="/static/img/loading.gif" data-src="{{image.file.url}}" width="{{ image.width }}" height="{{ image.height }}">
