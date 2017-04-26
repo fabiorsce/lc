@@ -159,7 +159,7 @@ margin-right: 0;}
                             <div id="filter_wrapper">
 								<div id="filters">
 									<input id="id_active_filter" type="hidden" name="">
-									<button onclick="getFilteredImages();">open lightbox with JSON playlist</button>
+									<!--<button onclick="getFilteredImages();">open lightbox with JSON playlist</button>-->
 									<input type="text" id="quicksearch" placeholder="Search Photos..." />
   									<div class="ui-group">
 									     <div class="button-group js-radio-button-group" data-filter-group="size" id="other_filters">
@@ -190,7 +190,7 @@ margin-right: 0;}
 										{% for image in images %}
 						       				<div class="grid-item image_gallery {{ image.description }}">
 			       								<span style="display:none;">{{ image.description }}</span>
-				                        		<a href="{{ image.file.url }}" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
+				                        		<a href="javascript:getFilteredImages('{{image.file.url}}');" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
 					       							<img src="/static/img/loading.gif" data-src="{{image.file.url}}" width="{{ image.width }}" height="{{ image.height }}">
 												<figcaption></figcaption>
 					       						</a>
@@ -327,18 +327,25 @@ function debounce( fn, threshold ) {
 
 
 	<script type="text/javascript">
-		function getFilteredImages() {
+		function getFilteredImages(img_src) {
 			rlobj_mixedPlaylist.playlistItems = [];
 			$("a.nch-lightbox > img:visible").each(function(index,element){
-					console.log($(this).attr('data-src'));
 					rlobj_mixedPlaylist.playlistItems.push({
 						url:$(this).attr('data-src'),
 						thumbnailPath:$(this).attr('data-src'),
 						description:"<p>Paisagem</p>"	
 					});
 
-		  	}); 
-			FWDRL.show('rlobj_mixedPlaylist', 0);
+		  	});
+		  	var img_idx = 0;
+			for (i=0; i < rlobj_mixedPlaylist.playlistItems.length; i++) {
+				if (rlobj_mixedPlaylist.playlistItems[i].url == img_src) {
+					img_idx = i;
+					break;
+				}
+			}
+
+			FWDRL.show('rlobj_mixedPlaylist', img_idx);
 		}
 	</script>
 	<script type="text/javascript">
