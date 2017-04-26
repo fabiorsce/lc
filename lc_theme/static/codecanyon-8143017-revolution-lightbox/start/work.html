@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Revolution Lightbox</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1 user-scalable=no" />
+		
+		<!--  Import required css and js files  -->
+		<link rel="stylesheet" type="text/css"  href="content/global.css"/>
+
+		<script type="text/javascript" src="../js/FWDRLConsole.js"></script>
+		<script type="text/javascript" src="../js/FWDRLDisplayObject.js"></script>
+		<script type="text/javascript" src="../js/FWDRLTransformDisplayObject.js"></script>
+		<script type="text/javascript" src="../js/FWDRL.js"></script>
+		<script type="text/javascript" src="../js/FWDRLData.js"></script>
+		<script type="text/javascript" src="../js/FWDRLDL.js"></script>
+		<script type="text/javascript" src="../js/FWDRLInfo.js"></script>
+		<script type="text/javascript" src="../js/FWDRLUtils.js"></script>		
+		<script type="text/javascript" src="../js/FWDAnimation.js"></script>	
+		<script type="text/javascript" src="../js/FWDRLContextMenu.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEventDispatcher.js"></script>
+		<script type="text/javascript" src="../js/FWDRLPreloader.js"></script>
+		<script type="text/javascript" src="../js/FWDRLComplexButton.js"></script>
+		<script type="text/javascript" src="../js/FWDRLSimpleButton.js"></script>
+		<script type="text/javascript" src="../js/FWDRLHider.js"></script>
+		<script type="text/javascript" src="../js/FWDRLThumbnailsManager.js"></script>
+		<script type="text/javascript" src="../js/FWDRLThumb.js"></script>
+		<script type="text/javascript" src="../js/FWDRLTimerManager.js"></script>
+		<script type="text/javascript" src="../js/FWDRLSlideShowPreloader.js"></script>
+		<script type="text/javascript" src="../js/FWDRLDescriptionWindow.js"></script>
+		<script type="text/javascript" src="../js/FWDRLFacebookShare.js"></script>
+		<script type="text/javascript" src="../js/FWDRLFlashTest.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEVPlayer.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEVPVideoScreen.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEVPVolumeButton.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEVPController.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEVPPoster.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEAP.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEAPAudioScreen.js"></script>
+		<script type="text/javascript" src="../js/FWDRLEAPController.js"></script>
+		
+		
+		<!-- Setup audio player-->
+		<script type="text/javascript">
+			
+			var props_obj = {
+				//main settings
+				buttonsAlignment:"in",
+				slideShowAutoPlay:"no",
+				useAsModal:"no",
+				addKeyboardSupport:"no",
+				showCloseButton:"no",
+				showShareButton:"yes",
+				showZoomButton:"no",
+				showSlideShowButton:"yes",
+				showSlideShowAnimation:"yes",
+				showNextAndPrevButtons:"no",
+				showNextAndPrevButtonsOnMobile:"yes",
+				defaultItemWidth:640,
+				defaultItemHeight:480,
+				buttonsHideDelay:1,
+				slideShowDelay:1,
+				itemOffsetHeight:10,
+				spaceBetweenButtons:5,
+				buttonsOffsetIn:50,
+				buttonsOffsetOut:50,
+				itemBorderSize:20,
+				itemBorderRadius:20,
+				backgroundOpacity:.4,
+				itemBoxShadow:"-10px 0px 20px #000000",
+				itemBackgroundColor:"#FF0000",
+				itemBorderColor:"#00FF00",
+				backgroundColor:"#FF0000",
+				//thumbnails settings
+				showThumbnails:"yes",
+				showThumbnailsHideOrShowButton:"yes",
+				showThumbnailsByDefault:"yes",
+				showThumbnailsOverlay:"yes",
+				showThumbnailsSmallIcon:"no",
+				thumbnailsImageHeight:120,
+				thumbnailsBorderSize:20,
+				thumbnailsBorderRadius:20,
+				spaceBetweenThumbnailsAndItem:100,
+				spaceBetweenThumbnails:10,
+				thumbnailsOffsetBottom:80,
+				thumbnailsOverlayOpacity:.9,
+				thumbnailsOverlayColor:"#0000FF",
+				thumbnailsBorderNormalColor:"#00FFFF",
+				thumbnailsBorderSelectedColor:"#00FF00",
+				//description settings
+				descriptionWindowPosition:"top",
+				showDescriptionButton:"yes",
+				showDescriptionByDefault:"yes",
+				descriptionWindowAnimationType:"opacity",
+				descriptionWindowBackgroundColor:"#0FFFFF",
+				descriptionWindowBackgroundOpacity:.3,
+				//video & audio players settings
+				videoControllerBackgroundColor:"#FFFFFF",
+				videoPosterBackgroundColor:"#FF99FF",
+				audioControllerBackgroundColor:"#FF00FF",
+				nextVideoOrAudioAutoPlay:"yes",
+				videoAutoPlay:"no",
+				audioAutoPlay:"no"
+			}
+			
+			FWDRLConsole.setPrototype();
+			//var logger = new FWDRLConsole();
+			FWDRLUtils.onReady(function(){
+				new FWDRL({	
+					//main settings
+					mainFolderPath:"content",
+					skinPath:"minimal_skin_dark",
+					facebookAppId:"213684265480896",//required only if the facebook share button is used
+					rightClickContextMenu:"default",
+					buttonsAlignment:"in",
+					useDeepLinking:"yes",
+					useAsModal:"no",
+					slideShowAutoPlay:"no",
+					addKeyboardSupport:"yes",
+					showCloseButton:"yes",
+					showShareButton:"no",
+					showZoomButton:"yes",
+					showSlideShowButton:"yes",
+					showSlideShowAnimation:"yes",
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"yes",
+					buttonsHideDelay:3,
+					slideShowDelay:4,
+					defaultItemWidth:640,
+					defaultItemHeight:480,
+					itemOffsetHeight:50,
+					spaceBetweenButtons:8,
+					buttonsOffsetIn:5,
+					buttonsOffsetOut:5,
+					itemBorderSize:4,
+					itemBorderRadius:2,
+					backgroundOpacity:.7,
+					itemBoxShadow:"none",
+					itemBackgroundColor:"#333333",
+					itemBorderColor:"#FFFFFF",
+					backgroundColor:"#000000",
+					//thumbnails settings
+					showThumbnails:"yes",
+					showThumbnailsHideOrShowButton:"yes",
+					showThumbnailsByDefault:"yes",
+					showThumbnailsOverlay:"yes",
+					showThumbnailsSmallIcon:"yes",
+					thumbnailsHoverEffect:"scale",
+					thumbnailsImageHeight:80,
+					thumbnailsBorderSize:4,
+					thumbnailsBorderRadius:5,
+					spaceBetweenThumbnailsAndItem:0,
+					thumbnailsOffsetBottom:0,
+					spaceBetweenThumbnails:2,
+					thumbnailsOverlayOpacity:.6,
+					thumbnailsOverlayColor:"#000000",
+					thumbnailsBorderNormalColor:"#FFFFFF",
+					thumbnailsBorderSelectedColor:"#FFFFFF",
+					//description settings
+					descriptionWindowPosition:"bottom",
+					showDescriptionButton:"yes",
+					showDescriptionByDefault:"no",
+					descriptionWindowAnimationType:"motion",
+					descriptionWindowBackgroundColor:"#FFFFFF",
+					descriptionWindowBackgroundOpacity:.9,
+					//video & audio players settings
+					useVideo:"yes",
+					useAudio:"yes",
+					videoShowFullScreenButton:"yes",
+					addVideoKeyboardSupport:"yes",
+					nextVideoOrAudioAutoPlay:"yes",
+					videoAutoPlay:"no",
+					videoLoop:"no",
+					audioAutoPlay:"no",
+					audioLoop:"no",
+					videoControllerHideDelay:3,
+					videoControllerHeight:41,
+					audioControllerHeight:44,
+					startSpaceBetweenButtons:7,
+					vdSpaceBetweenButtons:9,
+					mainScrubberOffestTop:14,
+					scrubbersOffsetWidth:1,
+					audioScrubbersOffestTotalWidth:4,
+					timeOffsetLeftWidth:5,
+					timeOffsetRightWidth:3,
+					volumeScrubberWidth:80,
+					volumeScrubberOffsetRightWidth:0,
+					videoControllerBackgroundColor:"#FFFFFF",
+					videoPosterBackgroundColor:"#0099FF",
+					audioControllerBackgroundColor:"#FFFFFF",
+					timeColor:"#000000"
+				});
+				
+				FWDRL.addListener(FWDRL.SHOW_START, showStartHandler);
+				FWDRL.addListener(FWDRL.SHOW_COMPLETE, showCompleteHandler);
+				FWDRL.addListener(FWDRL.HIDE_START, hideStartHandler);
+				FWDRL.addListener(FWDRL.HIDE_COMPLETE, hideCompleteHandler);
+				FWDRL.addListener(FWDRL.UPDATE, updateHandler);
+			});
+			
+			function showStartHandler(){
+				//if(console) console.log("show start");
+			}
+			
+			function showCompleteHandler(){
+				//if(console) console.log("show complete");
+			}
+			
+			function hideStartHandler(){
+				//if(console) console.log("hide start");
+			}
+			
+			function hideCompleteHandler(){
+				//if(console) console.log("hide complete");
+			}
+			
+			function updateHandler(e){
+				//if(console) console.log("update to current item with id - " + e.curId);
+			}
+		
+			var rlobj_playlist = {
+				playlistItems:[{
+					url:"content/media/images/1.jpg",
+					thumbnailPath:"content/media/thumbnails/1.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/videos/desktop.mp4,content/media/videos/mobile.mp4",
+					posterPath:"content/media/posters/poster.jpg,content/media/posters/poster-mobile.jpg",
+					thumbnailPath:"content/media/thumbnails/2.jpg",
+					width:600,
+					height:300,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"content/media/audio/01.mp3",
+					thumbnailPath:"content/media/thumbnails/2.jpg",
+					width:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"https://www.youtube.com/watch?v=QdITKPWozF0",
+					thumbnailPath:"content/media/thumbnails/4.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"http://vimeo.com/34635906",
+					thumbnailPath:"content/media/thumbnails/3.jpg",
+					width:400,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"content/media/my.swf",
+					thumbnailPath:"content/media/thumbnails/2.jpg",
+					width:800,
+					height:300,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"https://www.google.com/maps/embed/v1/place?q=Bulevardul+Dacia,+Bucharest,+Romania&key=...",
+					thumbnailPath:"content/media/thumbnails/1.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"RL_HTML",
+					thumbnailPath:"content/media/thumbnails/2.jpg",
+					width:800,
+					height:600,
+					html:"<p>HTML content here</p>"
+				},
+				{
+					url:"RL_AJAX:content/test.html",
+					thumbnailPath:"content/media/thumbnails/3.jpg",
+					width:800,
+					height:600,
+				},
+				{
+					url:"webdesign-flash.ro/iframe.html",
+					thumbnailPath:"content/media/thumbnails/3.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				}]
+			}
+			
+		</script>
+	</head>
+
+	<body style="background-color:#555555;">
+		<div id="myDiv" style="margin-top:20px;"></div>
+		<div id="myDiv2"></div>
+		<div style="width:1500px;">
+			<button onclick="FWDRL.show('playlist', 2);">open lightbox</button>
+			<button onclick="FWDRL.show('playlist', 2, 'props_obj');">open lightbox with props change</button>
+			<button onclick="FWDRL.show('rlobj_playlist', 1);">open lightbox with JSON</button>
+			
+			<button onclick="FWDRL.show('https://soundcloud.com/theworldofnick/sets/trap', 1);">open soundcloud lighbox</button>
+			
+			<button onclick="FWDRL.show('https://www.flickr.com/photos/coreyhayesphoto/albums/72157657424491573', 1);">open flickr lighbox</button>
+			
+			<button onclick="FWDRL.show('https://www.youtube.com/watch?v=7PCkvCPvDXk&list=PLFy9uG3bpsXYZKdfX_T_S_GitSPMSHVQY', 0);">open youtube lighbox</button>
+			
+			<button onclick="FWDRL.show('https://www.facebook.com/melinda.tomuta/media_set?set=a.922507177774914.100000469215443&type=3', 0);">open facebook lighbox</button>
+		</div>
+		
+		<!--  Playlist -->
+		<ul id="playlist">
+			<li data-url="https://s3-eu-west-1.amazonaws.com/files.criteria.co.uk/mark/Summer 14/Oryx Antelope.jpg?AWSAccessKeyId=AKIAIQ4DYWMTDRE6ZELQ&Expires=1411110921&Signature=nb5krBIWqWfRyPoGOaiheJaSIwc="  data-thumbnail-path="content/media/thumbnails/1.jpg" data-width="600" data-height="500">
+				<div>
+					<p>Lorem ipsum dolor sit.</p>
+				</div>
+			</li>
+			<li data-url="RL_AJAX:content/test.html" data-thumbnail-path="content/media/thumbnails/1.jpg">
+				<p>Image 1 description</p>
+			</li>
+			<li data-url="content/media/images/2.jpg" data-thumbnail-path="content/media/thumbnails/2.jpg">
+			</li>
+			<li data-url="content/media/videos/desktop.mp4,content/media/videos/mobile.mp4" data-poster-path="content/media/posters/poster.jpg,content/media/posters/poster-mobile.jpg" data-thumbnail-path="content/media/thumbnails/3.jpg" data-width="800" data-height="550">
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae accumsan elit. Nulla condimentum placerat leo eu sagittis. Nam accumsan tortor eu nunc fermentum, ut fermentum quam blandit. Vestibulum sed mattis dolor. Aliquam erat volutpat. Duis nisi justo, aliquet id fringilla sit amet, egestas sed sem. Fusce interdum, quam vitae fermentum pharetra, mi elit aliquet leo, auctor tincidunt magna leo sed odio.</p>
+				</div>
+			</li>
+			<li data-url="content/media/videos/desktop.mp4,content/media/videos/mobile.mp4" data-poster-path="content/media/posters/poster.jpg,content/media/posters/poster-mobile.jpg" data-thumbnail-path="content/media/thumbnails/3.jpg" data-width="800" data-height="550">
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae accumsan elit. Nulla condimentum placerat leo eu sagittis. Nam accumsan tortor eu nunc fermentum, ut fermentum quam blandit. Vestibulum sed mattis dolor. Aliquam erat volutpat. Duis nisi justo, aliquet id fringilla sit amet, egestas sed sem. Fusce interdum, quam vitae fermentum pharetra, mi elit aliquet leo, auctor tincidunt magna leo sed odio.</p>
+				</div>
+			</li>
+			<li data-url="content/media/audio/01.mp3"  data-thumbnail-path="content/media/thumbnails/4.jpg" data-width="600">
+				<div>
+					<p>Lorem ipsum dolor sit.</p>
+				</div>
+			</li>
+			
+			<li data-url="https://www.youtube.com/watch?v=9bZkp7q19f0"  data-thumbnail-path="content/media/thumbnails/1.jpg" data-width="600" data-height="500">
+				<div>
+					<p>Lorem ipsum dolor sit.</p>
+				</div>
+			</li>
+			
+			<li data-url="http://vimeo.com/35454816"  data-thumbnail-path="content/media/thumbnails/2.jpg" data-width="600">
+				<div>
+					<p>Lorem ipsum dolor sit.</p>
+				</div>
+			</li>
+			
+			<li data-url="http://vimeo.com/35454816"  data-thumbnail-path="content/media/thumbnails/2.jpg" data-width="600">
+				<div>
+					<p>Lorem ipsum dolor sit.</p>
+				</div>
+			</li>
+			
+			<li data-url="http://vimeo.com/35454816"  data-thumbnail-path="content/media/thumbnails/2.jpg" data-width="600">
+				<div>
+					<p>Lorem ipsum dolor sit.</p>
+				</div>
+			</li>
+	
+			<li data-url="content/media/flash/fwd.swf"  data-width="800" data-height="500" data-thumbnail-path="content/media/thumbnails/3.jpg">
+				<p>Image 1 description</p>
+			</li>
+			<li data-url="https://www.google.com/maps/embed/v1/place?q=Bulevardul+Dacia,+Bucharest,+Romania&key=..." data-thumbnail-path="content/media/thumbnails/1.jpg">
+				<p>Image 1 description</p>
+			</li>
+			<li data-url="RL_HTML" data-thumbnail-path="content/media/thumbnails/4.jpg">
+				<div style="background-color:#FFFFFF;">
+					<p>HTML CONTENT EXAMPLE</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae accumsan elit. Nulla condimentum placerat leo eu sagittis. Nam accumsan tortor eu nunc fermentum, ut fermentum quam blandit. Vestibulum sed mattis dolor. Aliquam erat volutpat. Duis nisi justo, aliquet id fringilla sit amet, egestas sed sem. Fusce interdum, quam vitae fermentum pharetra, mi elit aliquet leo, auctor tincidunt magna leo sed odio.</p>
+				</div>
+			</li>
+		
+		</ul>
+		
+	</body>
+	
+</html>
+
+
+ 	
+

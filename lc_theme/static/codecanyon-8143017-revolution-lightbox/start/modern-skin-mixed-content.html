@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Revolution Lightbox</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1 user-scalable=no" />
+		
+		<!--  Import required css and js files  -->
+		<link rel="stylesheet" type="text/css"  href="content/global.css"/>
+		<script type="text/javascript" src="java/FWDRL.js"></script>
+		
+		<!-- Setup RL-->
+		<script type="text/javascript">
+			FWDRLUtils.onReady(function(){
+				new FWDRL({	
+					//main settings
+					mainFolderPath:"content",
+					skinPath:"modern_skin_dark",
+					facebookAppId:"213684265480896",
+					rightClickContextMenu:"default",
+					buttonsAlignment:"in",
+					useDeepLinking:"yes",
+					useAsModal:"no",
+					slideShowAutoPlay:"no",
+					addKeyboardSupport:"yes",
+					showCloseButton:"yes",
+					showShareButton:"yes",
+					showZoomButton:"yes",
+					showSlideShowButton:"yes",
+					showSlideShowAnimation:"yes",
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"yes",
+					buttonsHideDelay:10,
+					slideShowDelay:4,
+					defaultItemWidth:640,
+					defaultItemHeight:480,
+					itemOffsetHeight:50,
+					spaceBetweenButtons:8,
+					buttonsOffsetIn:5,
+					buttonsOffsetOut:5,
+					itemBorderSize:4,
+					itemBorderRadius:2,
+					backgroundOpacity:.7,
+					itemBoxShadow:"none",
+					itemBackgroundColor:"#333333",
+					itemBorderColor:"#FFFFFF",
+					backgroundColor:"#000000",
+					//thumbnails settings
+					showThumbnails:"yes",
+					showThumbnailsHideOrShowButton:"yes",
+					showThumbnailsByDefault:"yes",
+					showThumbnailsOverlay:"yes",
+					showThumbnailsSmallIcon:"yes",
+					thumbnailsHoverEffect:"scale",
+					thumbnailsImageHeight:80,
+					thumbnailsBorderSize:4,
+					thumbnailsBorderRadius:0,
+					spaceBetweenThumbnailsAndItem:0,
+					thumbnailsOffsetBottom:0,
+					spaceBetweenThumbnails:2,
+					thumbnailsOverlayOpacity:.6,
+					thumbnailsOverlayColor:"#000000",
+					thumbnailsBorderNormalColor:"#FFFFFF",
+					thumbnailsBorderSelectedColor:"#FFFFFF",
+					//description settings
+					descriptionWindowPosition:"bottom",
+					showDescriptionButton:"yes",
+					showDescriptionByDefault:"no",
+					descriptionWindowAnimationType:"motion",
+					descriptionWindowBackgroundColor:"#FFFFFF",
+					descriptionWindowBackgroundOpacity:.9,
+					//video & audio players settings
+					useVideo:"yes",
+					useAudio:"yes",
+					videoShowFullScreenButton:"yes",
+					addVideoKeyboardSupport:"yes",
+					nextVideoOrAudioAutoPlay:"yes",
+					videoAutoPlay:"no",
+					videoLoop:"no",
+					audioAutoPlay:"no",
+					audioLoop:"no",
+					videoControllerHideDelay:3,
+					videoControllerHeight:41,
+					audioControllerHeight:44,
+					startSpaceBetweenButtons:7,
+					vdSpaceBetweenButtons:9,
+					mainScrubberOffestTop:14,
+					scrubbersOffsetWidth:1,
+					audioScrubbersOffestTotalWidth:4,
+					timeOffsetLeftWidth:5,
+					timeOffsetRightWidth:3,
+					volumeScrubberWidth:80,
+					volumeScrubberOffsetRightWidth:0,
+					videoControllerBackgroundColor:"#FFFFFF",
+					videoPosterBackgroundColor:"#0099FF",
+					audioControllerBackgroundColor:"#FFFFFF",
+					timeColor:"#000000"
+				});
+			});
+		</script>
+		
+		<script>
+			//Change settings object
+			var props_obj = {
+				backgroundColor:"#0099FF",
+				backgroundOpacity:1,
+				buttonsAlignment:"out"
+			}
+			
+			//JSON playlist object
+			var rlobj_mixedPlaylist = {
+				playlistItems:[
+				{
+					url:"content/media/images/1.jpg",
+					thumbnailPath:"content/media/thumbnails/image.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/videos/desktop.mp4,content/media/videos/mobile.mp4",
+					posterPath:"content/media/posters/poster.jpg,content/media/posters/poster-mobile.jpg",
+					thumbnailPath:"content/media/thumbnails/video2.jpg",
+					width:600,
+					height:300,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"content/media/audio/01.mp3",
+					thumbnailPath:"content/media/thumbnails/audio1.jpg",
+					width:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"https://www.youtube.com/watch?v=QdITKPWozF0",
+					thumbnailPath:"content/media/thumbnails/youtube.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"http://vimeo.com/34635906",
+					thumbnailPath:"content/media/thumbnails/vimeo.jpg",
+					width:400,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"content/media/flash/fwd.swf",
+					thumbnailPath:"content/media/thumbnails/flash.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"https://www.google.com/maps/embed/v1/place?q=Bulevardul+Dacia,+Bucharest,+Romania&key=...",
+					thumbnailPath:"content/media/thumbnails/maps.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"RL_HTML",
+					thumbnailPath:"content/media/thumbnails/html.jpg",
+					width:800,
+					height:600,
+					html:"<p class='white'>HTML content here</p>"
+				},
+				{
+					url:"RL_AJAX:content/test.html",
+					thumbnailPath:"content/media/thumbnails/ajax.jpg",
+					width:800,
+					height:600,
+				},
+				{
+					url:"http://www.webdesign-flash.ro/iframe.html",
+					thumbnailPath:"content/media/thumbnails/iframe.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				}]
+			}
+			
+			//JSON single item object
+			var rlobj_singleItem = {
+				playlistItems:[
+				{
+					url:"content/media/images/1.jpg",
+					thumbnailPath:"content/media/thumbnails/image.jpg"
+				}
+				]
+			}
+		</script>
+	</head>
+
+	<body style="background-color:#CCCCCC;">
+		
+		<button onclick="FWDRL.show('mixedPlaylist', 0);">open lightbox with html playlist</button>
+		<button onclick="FWDRL.show('rlobj_mixedPlaylist', 1);">open lightbox with JSON playlist</button>
+		<button onclick="FWDRL.show('mixedPlaylist', 1, 'props_obj');">open lightbox with modified settings</button>
+		<button onclick="FWDRL.show('https://www.facebook.com/melinda.tomuta/media_set?set=a.922507177774914.100000469215443&type=3', 0);">open facebook album</button>
+		<button onclick="FWDRL.show('https://www.flickr.com/photos/coreyhayesphoto/albums/72157657424491573', 0);">open flickr album</button>
+		<button onclick="FWDRL.show('https://www.youtube.com/watch?v=7PCkvCPvDXk&list=PLFy9uG3bpsXYZKdfX_T_S_GitSPMSHVQY', 0);">open youtube album</button>
+		<button onclick="FWDRL.show('https://soundcloud.com/theworldofnick/sets/trap', 0);">open soundcloud album</button>
+		<p></p>
+		<a href="javascript:void(0)" onclick="FWDRL.show('mixedPlaylist', 3);">open lightbox from a a href</a>
+		<p></p>
+		<img src="img.jpg" onclick="FWDRL.show('mixedPlaylist', 4);"/>
+		
+		<!-- Mixed playlist  -->
+		<ul id="mixedPlaylist" style="display:none;">
+			<li data-url="content/media/images/1.jpg" data-thumbnail-path="content/media/thumbnails/image.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/videos/desktop.mp4,content/media/videos/mobile.mp4" data-poster-path="content/media/posters/video.jpg,content/media/posters/video-mobile.jpg" data-thumbnail-path="content/media/thumbnails/video2.jpg" data-width="600" data-height="450">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/audio/audio1.mp3" data-thumbnail-path="content/media/thumbnails/audio1.jpg" data-width="400">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="https://www.youtube.com/watch?v=9bZkp7q19f0" data-thumbnail-path="content/media/thumbnails/youtube.jpg"  data-width="1000" data-height="550">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="http://vimeo.com/50747914" data-thumbnail-path="content/media/thumbnails/vimeo.jpg" data-width="900" data-height="550">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/flash/fwd.swf" data-thumbnail-path="content/media/thumbnails/flash.jpg" data-width="600" data-height="450">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="https://www.google.com/maps/embed/v1/place?q=castelul%20hunedoara&key=..." data-thumbnail-path="content/media/thumbnails/maps.jpg" data-width="1100", data-height="650">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="RL_HTML" data-thumbnail-path="content/media/thumbnails/html.jpg" data-width="346" data-height="350">
+				<p class="white">HTML content here.</p>
+			</li>
+			<li data-url="RL_AJAX:content/ajax.html" data-thumbnail-path="content/media/thumbnails/ajax.jpg" data-width="900" data-height="650"></li>
+			<li data-url="http://www.webdesign-flash.ro/iframe.html" data-thumbnail-path="content/media/thumbnails/iframe.jpg" data-width="900" data-height="650">
+				<p>Item description here!</p>
+			</li>
+		</ul>
+		
+		<!-- Mixed playlist  -->
+		<ul id="singleItem" style="display:none;">
+			<li data-url="content/media/images/1.jpg">
+				<p>Item description here!</p>
+			</li>
+		</ul>
+		
+	</body>
+	
+</html>
+
+
+ 	
+

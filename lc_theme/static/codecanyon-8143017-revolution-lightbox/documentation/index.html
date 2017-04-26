@@ -1,0 +1,847 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>Revolution Lightbox Documentation</title>
+	
+	<script type="text/javascript" src="scripts/shCore.js"></script>
+	<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+	<script type="text/javascript" src="scripts/shBrushXml.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+	<script type="text/javascript">SyntaxHighlighter.all();</script>
+	
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+	</style>
+	<link rel="stylesheet" href="assets/blueprint-css/fwd.css" type="text/css">
+</head>
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;Revolution Lightbox &rdquo; Documentation by FWDesign</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;<span class="center alt">Revolution Lightbox</span>&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 10/12/2015<br>
+					By:© FWD (Future Web Design)<br>
+					Email: <a href="mailto:tibi_diablo@yahoo.com">tibi_diablo@yahoo.com</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing our script. If you have any questions that are beyond the scope of this help file, please feel free to email via our email. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="alpha">
+			<li><a href="#important">IMPORTANT NOTES - read this before anything else</a></li>
+			<li><a href="#installation">Revolution Lightbox installation</a></li>
+			<li><a href="#config">Constructor parameters</a></li>
+			<li><a href="#json">Setup JSON content playlist</a></li>
+			<li><a href="#html">Setup HTML content playlist</a></li>
+			<li><a href="#sm">Setup Social Media Websites playlists</a></li>
+			<li><a href="#show">Open / show Revolution Lightbox</a></li>
+			<li><a href="#source">Change lightbox settings at runtime</a></li>
+			<li><a href="#share">Setup Facebook app</a></li>
+			<li><a href="#api">API specifications</a></li>
+			<li><a href="#credits">Sources and Credits</a></li>
+		</ol>
+	
+		<hr>
+		
+		<h3 id="important"><strong>A) IMPORTANT NOTES - make sure you read this!</strong> - <a href="#toc">top</a></h3>
+		<p>Please note that the RL installation and configuration is not complicated but because it has a lot of customizable settings it might seem complicated, please go through the entire documentation before trying to install it into your own page. Basically what it must be done is to copy some html and js code from the examples we provided and paste it into your own html page and of course add your own content.</p>
+		<p>When testing local deeplinking is disabled regardless of the RL settings</p> 
+		<p>If you want to use video or audio only, mp4 video and mp3 audio are required. It will work in all browsers on desktop machines or mobile devices, this is extremely important because there is no need to create multiple audio or video formats for browsers that don't support mp4 or mp3, also please note that the mp4 and mp3 video aud audio formats are recommended and used by all major browsers distributors like Google, Microsoft, Apple, Mozilla etc.!</p>
+		<p>The server is character case sensitive so make sure that the RL settings are identical to those from the provided examples.</p>
+		<p>Some of the  features will not work locally like the share button or playing youtube videos on some browsers like IE and Opera, this is normal behavior because most browsers do not allow this, once uploaded on the server it will function properly.</p>
+		<p>When something is wrong with a RL action a red info box with the problem description will appear at the window top left corner, please note that this box is there to help you understand the problem, for example if an image is not found the box will appear and inform you about the problem. The box will hide when navigating to another item.</p>
+		<p>The RL skin is constructed from png images. We have included psd files with slices just in case you want to modify the skin. If you want a different skin the .png files must be modified. We have a great designer in our team so if you need a custom skin please contact us!</p>
+		
+		<h3 id="installation"><strong>B) Revolution Lightbox installation</strong> - <a href="#toc">top</a></h3>
+		<p>This is a small tutorial about how to install RL in your page.</p>
+		<p>In the download files there is a start folder and in this folder there are some html files, each of this html examples have exactly the same structure with different playlist content. You can use one of them to copy and paste the required html and js code based on the skin that you need. In this tutorial we have used the <span class="boldLi">minimal-skin-mixed-content.html</span> file.</p>
+		<p>The skin is created using png images, if you want a custom skin please contact us. If you want to create a skin of your own modify the ones we already provided.</p>
+		<ul>
+			<li>Copy and paste the content folder and the java folder into the same folder with your .html file, inside the content folder there are other folders and files which are self explanatory. Keep only the skin folder that you need to save space on the server.</li>
+			<li>Open minimal-skin-mixed-content.html with a text editor.</li>
+			<li>The javascript and CSS files must be imported in the head section of your html file add the code from below.</li>
+			<pre class="brush: js; html-script: true">
+				<link rel="stylesheet" type="text/css"  href="content/global.css"/>
+				<script type="text/javascript" src="java/FWDRL.js"></script></pre>
+			<li>Next step is to set up the playlist/content, to do this copy and paste the <span class="boldLi">ul</span> element with the id <span class="boldLi">gallery1</span> into the body element, the id is passed to the RL show method. For info about how to create JSON and HTML playlists please read <a href="#html">Setup  HTML content playlist</a> or <a href="#json">Setup  JSON content playlist</a>.</li>
+			<pre class="brush: js; html-script: true">
+				<!-- Mixed playlist  -->
+				<ul id="mixedPlaylist" style="display:none;">
+					<li data-url="content/media/images/1.jpg" data-thumbnail-path="content/media/thumbnails/image.jpg">
+						<p>Item description here!</p>
+					</li>
+					<li data-url="content/media/videos/desktop.mp4,content/media/videos/mobile.mp4" data-poster-path="content/media/posters/video.jpg,content/media/posters/video-mobile.jpg" data-thumbnail-path="content/media/thumbnails/video2.jpg" data-width="600" data-height="450">
+						<p>Item description here!</p>
+					</li>
+					<li data-url="content/media/audio/audio1.mp3" data-thumbnail-path="content/media/thumbnails/audio1.jpg" data-width="400">
+						<p>Item description here!</p>
+					</li>
+					<li data-url="https://www.youtube.com/watch?v=9bZkp7q19f0" data-thumbnail-path="content/media/thumbnails/youtube.jpg"  data-width="1000" data-height="550">
+						<p>Item description here!</p>
+					</li>
+					<li data-url="http://vimeo.com/50747914" data-thumbnail-path="content/media/thumbnails/vimeo.jpg" data-width="900" data-height="550">
+						<p>Item description here!</p>
+					</li>
+					<li data-url="content/media/flash/fwd.swf" data-thumbnail-path="content/media/thumbnails/flash.jpg" data-width="600" data-height="450">
+						<p>Item description here!</p>
+					</li>
+					<li data-url="https://www.google.com/maps/embed/v1/place?q=castelul%20hunedoara&key=..." data-thumbnail-path="content/media/thumbnails/maps.jpg" data-width="1100", data-height="650">
+						<p>Item description here!</p>
+					</li>
+					<li data-url="RL_HTML" data-thumbnail-path="content/media/thumbnails/html.jpg" data-width="346" data-height="350">
+						<p class="white">HTML content here.</p>
+					</li>
+					<li data-url="RL_AJAX:content/ajax.html" data-thumbnail-path="content/media/thumbnails/ajax.jpg" data-width="900" data-height="650"></li>
+					<li data-url="http://www.webdesign-flash.ro/iframe.html" data-thumbnail-path="content/media/thumbnails/iframe.jpg" data-width="900" data-height="650">
+						<p>Item description here!</p>
+					</li>
+				</ul></pre>
+			<li>Next step is to initialize RL with javascript, in the head section of your html page add the code from below. Please note that all parameters are described in the <a href="#config">constructor parameters</a> section.</li>
+			<pre class="brush: js; html-script: true">
+			<!-- Setup RL-->
+			<script type="text/javascript">
+				FWDRLUtils.onReady(function(){
+					new FWDRL({	
+						//main settings
+						mainFolderPath:"content",
+						skinPath:"minimal_skin_dark",
+						facebookAppId:"213684265480896",
+						rightClickContextMenu:"default",
+						buttonsAlignment:"in",
+						useDeepLinking:"yes",
+						useAsModal:"no",
+						slideShowAutoPlay:"no",
+						addKeyboardSupport:"yes",
+						showCloseButton:"yes",
+						showShareButton:"yes",
+						showZoomButton:"yes",
+						showSlideShowButton:"yes",
+						showSlideShowAnimation:"yes",
+						showNextAndPrevButtons:"yes",
+						showNextAndPrevButtonsOnMobile:"yes",
+						buttonsHideDelay:3,
+						slideShowDelay:4,
+						defaultItemWidth:800,
+						defaultItemHeight:500,
+						itemOffsetHeight:50,
+						spaceBetweenButtons:1,
+						buttonsOffsetIn:2,
+						buttonsOffsetOut:5,
+						itemBorderSize:4,
+						itemBorderRadius:0,
+						backgroundOpacity:.8,
+						itemBoxShadow:"none",
+						itemBackgroundColor:"#333333",
+						itemBorderColor:"#FFFFFF",
+						backgroundColor:"#000000",
+						//thumbnails settings
+						showThumbnails:"yes",
+						showThumbnailsHideOrShowButton:"yes",
+						showThumbnailsByDefault:"yes",
+						showThumbnailsOverlay:"yes",
+						showThumbnailsSmallIcon:"yes",
+						thumbnailsHoverEffect:"scale",
+						thumbnailsImageHeight:80,
+						thumbnailsBorderSize:4,
+						thumbnailsBorderRadius:0,
+						spaceBetweenThumbnailsAndItem:0,
+						thumbnailsOffsetBottom:0,
+						spaceBetweenThumbnails:2,
+						thumbnailsOverlayOpacity:.6,
+						thumbnailsOverlayColor:"#FFFFFF",
+						thumbnailsBorderNormalColor:"#FFFFFF",
+						thumbnailsBorderSelectedColor:"#FFFFFF",
+						//description settings
+						showDescriptionButton:"yes",
+						showDescriptionByDefault:"no",
+						descriptionWindowAnimationType:"motion",
+						descriptionWindowPosition:"top",
+						descriptionWindowBackgroundColor:"#FFFFFF",
+						descriptionWindowBackgroundOpacity:.95,
+						//video & audio players settings
+						useVideo:"yes",
+						useAudio:"yes",
+						videoShowFullScreenButton:"yes",
+						addVideoKeyboardSupport:"yes",
+						nextVideoOrAudioAutoPlay:"yes",
+						videoAutoPlay:"no",
+						videoLoop:"no",
+						audioAutoPlay:"no",
+						audioLoop:"no",
+						videoControllerHideDelay:3,
+						videoControllerHeight:41,
+						audioControllerHeight:44,
+						startSpaceBetweenButtons:7,
+						vdSpaceBetweenButtons:2,
+						mainScrubberOffestTop:14,
+						scrubbersOffsetWidth:1,
+						audioScrubbersOffestTotalWidth:10,
+						timeOffsetLeftWidth:5,
+						timeOffsetRightWidth:3,
+						volumeScrubberWidth:80,
+						videoControllerBackgroundColor:"#FFFFFF",
+						videoPosterBackgroundColor:"#0099FF",
+						audioControllerBackgroundColor:"#FFFFFF",
+						timeColor:"#000000"
+					});
+				});
+			</script></pre>
+        </ul>   
+		<p>This is how RL is installed in a HTML page, please read the  <a href="#config">Constructor parameters</a> section, it will explain all settings in details.</p>
+		
+		<h3 id="config"><strong>C) Constructor parameters</strong> - <a href="#toc">top</a></h3>
+		<p>Please open minimal-skin-mixed-content.html with a text editor as reference. These parameters represents the possible setting of the RL they are all visiblebelow and described below. The parameters that are highlighted in red means that they can't be changed at run time.</p>
+		<pre class="brush: js; html-script: true">
+			<!-- Setup RL-->
+			<script type="text/javascript">
+				FWDRLUtils.onReady(function(){
+					new FWDRL({	
+						//main settings
+						mainFolderPath:"content",
+						skinPath:"minimal_skin_dark",
+						facebookAppId:"213684265480896",//required only if the share button button is used
+						rightClickContextMenu:"default",
+						buttonsAlignment:"in",
+						useDeepLinking:"yes",
+						useAsModal:"no",
+						slideShowAutoPlay:"no",
+						addKeyboardSupport:"yes",
+						showCloseButton:"yes",
+						showShareButton:"yes",
+						showZoomButton:"yes",
+						showSlideShowButton:"yes",
+						showSlideShowAnimation:"yes",
+						showNextAndPrevButtons:"yes",
+						showNextAndPrevButtonsOnMobile:"yes",
+						buttonsHideDelay:3,
+						slideShowDelay:4,
+						defaultItemWidth:800,
+						defaultItemHeight:500,
+						itemOffsetHeight:50,
+						spaceBetweenButtons:1,
+						buttonsOffsetIn:2,
+						buttonsOffsetOut:5,
+						itemBorderSize:4,
+						itemBorderRadius:0,
+						backgroundOpacity:.8,
+						itemBoxShadow:"none",
+						itemBackgroundColor:"#333333",
+						itemBorderColor:"#FFFFFF",
+						backgroundColor:"#000000",
+						//thumbnails settings
+						showThumbnails:"yes",
+						showThumbnailsHideOrShowButton:"yes",
+						showThumbnailsByDefault:"yes",
+						showThumbnailsOverlay:"yes",
+						showThumbnailsSmallIcon:"yes",
+						thumbnailsHoverEffect:"scale",
+						thumbnailsImageHeight:80,
+						thumbnailsBorderSize:4,
+						thumbnailsBorderRadius:0,
+						spaceBetweenThumbnailsAndItem:0,
+						thumbnailsOffsetBottom:0,
+						spaceBetweenThumbnails:2,
+						thumbnailsOverlayOpacity:.6,
+						thumbnailsOverlayColor:"#FFFFFF",
+						thumbnailsBorderNormalColor:"#FFFFFF",
+						thumbnailsBorderSelectedColor:"#FFFFFF",
+						//description settings
+						showDescriptionButton:"yes",
+						showDescriptionByDefault:"no",
+						descriptionWindowAnimationType:"motion",
+						descriptionWindowPosition:"top",
+						descriptionWindowBackgroundColor:"#FFFFFF",
+						descriptionWindowBackgroundOpacity:.95,
+						//video & audio players settings
+						useVideo:"yes",
+						useAudio:"yes",
+						videoShowFullScreenButton:"yes",
+						addVideoKeyboardSupport:"yes",
+						nextVideoOrAudioAutoPlay:"yes",
+						videoAutoPlay:"no",
+						videoLoop:"no",
+						audioAutoPlay:"no",
+						audioLoop:"no",
+						videoControllerHideDelay:3,
+						videoControllerHeight:41,
+						audioControllerHeight:44,
+						startSpaceBetweenButtons:7,
+						vdSpaceBetweenButtons:2,
+						mainScrubberOffestTop:14,
+						scrubbersOffsetWidth:1,
+						audioScrubbersOffestTotalWidth:10,
+						timeOffsetLeftWidth:5,
+						timeOffsetRightWidth:3,
+						volumeScrubberWidth:80,
+						videoControllerBackgroundColor:"#FFFFFF",
+						videoPosterBackgroundColor:"#0099FF",
+						audioControllerBackgroundColor:"#FFFFFF",
+						timeColor:"#000000"
+					});
+				});
+			</script></pre>
+		<br>
+		//main settings
+		<ul>
+			<li><span class="redBold">mainFolderPath</span>:"content" - The main folder path. This folder contains some important files like the skins, audio and video flash players, etc.In this folder you need to add your content (images, videos, etc), please note that your content can be added outside this folder but is a good idea to keep everything centralized.</li>
+			<li><span class="redBold">skinPath</span>:"minimal_skin_dark" - The skin path, the name of the folder that contains the skin.</li>
+			<li><span class="redBold">facebookAppId</span>:"213684265480896" - this represents the APP id used by facebook to load Facebook albums, for more info about how to get your own facebook APP id and Setup Facebook app please read <a href="#share">Setup Facebook app</a>.</li>
+			<li><span class="redBold">rightClickContextMenu</span>:"default" - this can be developer, default or disabled. We would appreciate it if you can leave this feature set to developer.</li>
+			<li><span class="boldLi">buttonsAlignment</span>:"in" - this can be in or out. If set to in the buttons will be positioned near the image. If set to out the buttons will be positioned at the right or left side of the screen.</li>
+			<li><span class="redBold">useDeepLinking</span>:"yes" - this can be yes or no. Allow or not deeplinking, if deeplinking is disabled the share button button will share the current page url.</li>
+			<li><span class="boldLi">useAsModal</span>:"yes" - this can be yes or no. Enable or disable the modal mode (modal means that the lightbox can be closed using the only close button).</li>
+			<li><span class="boldLi">slideShowAutoPlay</span>:"yes" - this can be yes or no. Enable or disable the RL slideshow autoplay.</li>
+			<li><span class="boldLi">addKeyboardSupport</span>:"yes" - this can be yes or no. Enable or disable the keyboard left and right arrows to navigate between RL items.</li>
+			<li><span class="boldLi">showCloseButton</span>:"yes" - this can be yes or no. Hide or show the close button.</li>
+			<li><span class="boldLi">showShareButton</span>:"yes" - this can be yes or no. Hide or show the share button.</li>
+			<li><span class="boldLi">showZoomButton</span>:"yes" - this can be yes or no. Hide or show the image zoom in and out button.</li>
+			<li><span class="boldLi">showSlideShowButton</span>:"yes" - this can be yes or no. Hide or show the slideshow button.</li>
+			<li><span class="boldLi">showSlideShowAnimation</span>:"yes" - this can be yes or no. Hide or show the slideshow animation.</li>
+			<li><span class="boldLi">showNextAndPrevButtons</span>:"yes" - this can be yes or no. Hide or show the next and prev buttons.</li>
+			<li><span class="boldLi">showNextAndPrevButtonsOnMobile</span>:"yes" - this can be yes or no. Hide or show the next and prev buttons on mobile, this is an addition for the <span class="boldLi">showNextAndPrevButtons</span> feature.</li>
+			<li><span class="boldLi">buttonsHideDelay</span>:3 - this can be yes or no, delay in seconds until the buttons will hide.</li>
+			<li><span class="boldLi">slideShowDelay</span>:6 - slideshow duration in seconds.</li>
+			<li><span class="boldLi">defaultItemWidth</span>:800 - the default RL item width.</li>
+			<li><span class="boldLi">defaultItemHeight</span>:500 - the default RL item height.</li>
+			<li><span class="boldLi">itemOffsetHeight</span>:50 - a number that represents the px to remove from the top and bottom part of the RL item, think of this as margin top and margin bottom for the RL item.</li>
+			<li><span class="boldLi">spaceBetweenButtons</span>:1 - a number that represents the space between buttons in px.</li>
+			<li><span class="boldLi">buttonsOffsetIn</span>:2 - a number that represents the space between the buttons and the main RL item, think of this as margin left for the buttons from the right side of the RL item and margin right for the buttons from the left site of the RL item.</li>
+			<li><span class="boldLi">buttonsOffsetOut</span>:5 - a number that represents the space between the buttons and window left or right side, think of this as margin right for the buttons from the right side of the RL item and margin left for the buttons from the left site of the RL item.</li>
+			<li><span class="boldLi">itemBorderSize</span>:4 - a number that represents the RL item border size in px.</li>
+			<li><span class="boldLi">itemBorderRadius</span>:4 - a number that represents the RL item border radius in px.</li>
+			<li><span class="boldLi">backgroundOpacity</span>:.9 - a number from 0 to 1 that represents the main background opacity.</li>
+			<li><span class="boldLi">itemBoxShadow</span>:"none" - this can be none or a box shadow style like "10px 10px 5px #888888", represents the box shadow for the current item.</li>
+			<li><span class="boldLi">itemBackgroundColor</span>:"#333333" - the RL item background color.</li>
+			<li><span class="boldLi">itemBorderColor</span>:"#FFFFFF" - the RL item border color.</li>
+			<li><span class="boldLi">backgroundColor</span>:"#000000" - the RL main background color.</li>
+		</ul>
+		
+		//thumbnails settings
+		<ul>
+			<li><span class="boldLi">showThumbnails</span>:"yes" - this can be yes or no, hides or show the thumbnails.</li>
+			<li><span class="boldLi">showThumbnailsHideOrShowButton</span>:"yes" - this can be yes or no. Hide or show the show / hide thumbnails button.</li>
+			<li><span class="boldLi">showThumbnailsByDefault</span>:"yes" - this can be yes or no, shows or not the thumbnails by default when the RL is first showed.</li>
+			<li><span class="boldLi">showThumbnailsOverlay</span>:"yes" - this can be yes or no, hides or show the thumbnails overlay on hover.</li>
+			<li><span class="boldLi">showThumbnailsSmallIcon</span>:"yes" - this can be yes or no, hides or show the thumbnails small icon on hover.</li>
+			
+			<li><span class="boldLi">thumbnailsHoverEffect</span>:"scale" - this can be scale or opacity.</li>
+			<li><span class="boldLi">thumbnailsImageHeight</span>:80 - a number that represents the thumbnail height in px, please make sure that you are saving your thumbnails images to the height sepecified in this feature.</li>
+			<li><span class="boldLi">thumbnailsBorderSize</span>:4 -  a number that represents the thumbnail border size in px.</li>
+			<li><span class="boldLi">thumbnailsBorderRadius</span>:0 - a number that represents the thumbnail border radius in px.</li>
+			<li><span class="boldLi">spaceBetweenThumbnailsAndItem</span>:0 - a number that represents the space between thumbnails and the RL item in px.</li>
+			<li><span class="boldLi">thumbnailsOffsetBottom</span>:0 - a number that represents an offset is px that pushes the thumbnails up, think of this as margin bottom for the thumbnails.</li>
+			<li><span class="boldLi">spaceBetweenThumbnails</span>:0 - a number that represents the space between thumbnails in px.</li>
+			<li><span class="boldLi">thumbnailsOverlayOpacity</span>:.4 - a number from 0 to 1 that represents the thumbnail overlay opacity.</li>
+			<li><span class="boldLi">thumbnailsOverlayColor</span>:"#000000" -  the thumbnails overly color.</li>
+			<li><span class="boldLi">thumbnailsBorderNormalColor</span>:"#FFFFFF" -  the thumbnails normal border color.</li>
+			<li><span class="boldLi">thumbnailsBorderSelectedColor</span>:"#FFFFFF" -  the thumbnails selected color.</li>
+		</ul>
+		
+		//description window settings
+		<ul>
+			<li><span class="boldLi">showDescriptionButton</span>:"yes" - this can be yes or no, hide or show the description button.</li>
+			<li><span class="boldLi">showDescriptionByDefault</span>:"yes" - this can be yes or no, shows or not the description window by default.</li>
+			<li><span class="boldLi">descriptionWindowAnimationType</span>:"opacity" - this can be opacity or motion, represents the animation type of the description window when on show / hide.</li>
+			<li><span class="boldLi">descriptionWindowPosition</span>:"bottom" - this can be top or bottom, represents the description window position inside the RL item.</li>
+			<li><span class="boldLi">descriptionWindowBackgroundColor</span>:"#FFFFFF" - the background color of the description window.</li>
+			<li><span class="boldLi">descriptionWindowBackgroundOpacity</span>:.9 - a number from 0 to 1 that represents the description window background opacity.</li> 
+		</ul>
+		
+		//video & audio players settings
+		<ul>
+			<li><span class="boldLi">useVideo</span>:"yes" - this can be yes or no. Always set this to no if you don't need mp4 video.</li>
+			<li><span class="boldLi">useAudio</span>:"yes" - this can be yes or no. Always set this to no if you don't need mp3 audio.</li>
+			<li><span class="boldLi">videoShowFullScreenButton</span>:"yes" - this can be yes or no, show or hide the video player fullscreen button.</li>
+			<li><span class="boldLi">addVideoKeyboardSupport</span>:"yes" - this can be yes or no,add or not space keyboard support to pause or play the video (doesn't apply to youtube or vimeo).</li>
+			<li><span class="boldLi">nextVideoOrAudioAutoPlay</span>:"yes" - this can be yes or no, autoplay for the next video or audio, when changing the video if this is set to yes the video will start playing.</li>
+			<li><span class="boldLi">videoAutoPlay</span>:"no" - this can be yes or no.</li>
+			<li><span class="boldLi">videoLoop</span>:"no" - this can be yes or no (doesn't apply to youtube or vimeo).</li>
+			<li><span class="boldLi">audioAutoPlay</span>:"yes" - this can be yes or no.</li>
+			<li><span class="boldLi">audioLoop</span>:"no" - this can be yes or no.</li>
+			<li><span class="redBold">videoControllerHideDelay</span>:3 - a number that represents the seconds until the control bar is hiding after a period of inactivity.</li>
+			<li><span class="redBold">videoControllerHeight</span>:41 -the video control bar height in px.</li>
+			<li><span class="redBold">audioControllerHeight</span>:44 -the audio control bar height in px.</li>
+			<li><span class="redBold">startSpaceBetweenButtons</span>:10 - a number that represents the space between buttons in pixels.</li>
+			<li><span class="redBold">vdSpaceBetweenButtons</span>:4 - a number that represents the space between buttons in pixels.</li>
+			<li><span class="redBold">mainScrubberOffestTop</span>:14 - the amount in pixels to push the main scrubber up when the controller is hiding.</li>
+			<li><span class="redBold">scrubbersOffsetWidth</span>:10 - a number that represents the total amount in pixels removed from the scrubber bars when they are at the end of the control bar(change this number to understand it better, useful based on the skin type).</li>
+			<li><span class="redBold">audioScrubbersOffestTotalWidth</span>:80 - a number that represents the margin right in px for the audio volume bar.</li>
+			<li><span class="redBold">timeOffsetLeftWidth</span>:10 - a number that represents the an addition in px to the space between the time indicator left side and the scrubber.</li>
+			<li><span class="redBold">timeOffsetRightWidth</span>:10 - a number that represents the an addition in px to the space between the time indicator right side and the neighbor button.</li>
+			<li><span class="redBold">volumeScrubberWidth</span>:80 - a number that represents the volume scrubber width in px.</li>
+			<li><span class="redBold">volumeScrubberOffsetRightWidth</span>:80 - a number that represents the volume scrubber width in px.</li>
+			<li><span class="redBold">videoControllerBackgroundColor</span>:"#FFFFFF" - video control bar background color.</li>
+			<li><span class="redBold">videoPosterBackgroundColor</span>:"#0099FF" - video poster background color.</li>
+			<li><span class="redBold">audioControllerBackgroundColor</span>:"#FFFFFF" - audio player background color.</li>
+			<li><span class="redBold">timeColor</span>:"#000000" - audio and video current and total time color.</li>
+		</ul>
+		<br>
+		
+		<h3 id="json"><strong>D) Setup JSON content playlist</strong> - <a href="#toc">top</a></h3>
+		<p>Please open with a text editor the minimal-skin-mixed-content.html file as reference.</p>
+		<p>In this section is explained how to setup  a JSON object playlist for the RL to display, please note this object can be created at any time. The JSON playlist object must be defined as a variable on the window and it's variable name has to start with <span class="boldLi">rlobj_</span>, so if you want to create a JSON playlist with the name <span class="boldLi">mixedPlaylist</span> it's final name should be <span class="boldLi">rlobj_mixedPlaylist</span>, this is illustrated in the image below. After the JSON object is created it can be used when RL show method is called (for more info about the show method please read <a href="#show">Open / show Revolution Lightbox</a>)</p>
+		<p>There are ten content types (image, video, audio, youtube, vimeo, flash, google maps, html, ajax and iframe)  that RL can display and they are explained in detail below in this section. To add / remove items in the playlist object add or remove items depending of the type that you need. Below is the HTML content playlist with all supported types.</p>
+		<pre class="brush: js; html-script: true">
+		<script>
+			//JSON playlist object
+			var rlobj_mixedPlaylist = {
+				playlistItems:[
+				{
+					url:"content/media/images/1.jpg",
+					thumbnailPath:"content/media/thumbnails/image.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/videos/desktop.mp4,content/media/videos/mobile.mp4",
+					posterPath:"content/media/posters/poster.jpg,content/media/posters/poster-mobile.jpg",
+					thumbnailPath:"content/media/thumbnails/video2.jpg",
+					width:600,
+					height:300,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"content/media/audio/01.mp3",
+					thumbnailPath:"content/media/thumbnails/audio1.jpg",
+					width:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"https://www.youtube.com/watch?v=QdITKPWozF0",
+					thumbnailPath:"content/media/thumbnails/youtube.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"http://vimeo.com/34635906",
+					thumbnailPath:"content/media/thumbnails/vimeo.jpg",
+					width:400,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"content/media/flash/fwd.swf",
+					thumbnailPath:"content/media/thumbnails/flash.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"https://www.google.com/maps/embed/v1/place?q=Bulevardul+Dacia,+Bucharest,+Romania&key=...",
+					thumbnailPath:"content/media/thumbnails/maps.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				},
+				{
+					url:"RL_HTML",
+					thumbnailPath:"content/media/thumbnails/html.jpg",
+					width:800,
+					height:600,
+					html:"<p class='white'>HTML content here</p>"
+				},
+				{
+					url:"RL_AJAX:content/test.html",
+					thumbnailPath:"content/media/thumbnails/ajax.jpg",
+					width:800,
+					height:600,
+				},
+				{
+					url:"http://www.webdesign-flash.ro/iframe.html",
+					thumbnailPath:"content/media/thumbnails/iframe.jpg",
+					width:800,
+					height:600,
+					description:"<p>Item description here</p>"
+				}]
+			}
+		</script></pre>
+		<br>
+		<br>
+		<h4 class="bold">Image type:</h4>
+		<p>To add an image add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the image path, the <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"content/media/images/1.jpg",
+			thumbnailPath:"content/media/thumbnails/image.jpg",
+			description:"<p>Item description here.</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">Video (mp4) type:</h4>
+		<p>To add a video add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the video path, RL supports two video paths, one for desktop and one for mobile, this is useful if you want a large hd video for desktop and a smaller video version for mobile, the paths are separated by comma, the mobile video path is optional. The <span class="boldLi">posterPath</span> property represents the poster path, RL supports two poser paths, one for desktop and one for mobile, the paths are separated by comma, the mobile poster path is optional. The <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"content/media/videos/desktop.mp4,content/media/videos/mobile.mp4",
+			posterPath:"content/media/posters/poster.jpg,content/media/posters/poster-mobile.jpg",
+			thumbnailPath:"content/media/thumbnails/video2.jpg",
+			width:600,
+			height:300,
+			description:"<p>Item description here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">Audio (mp3) type:</h4>
+		<p>To add an audio mp3 file add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the mp3 path, the <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. The <span class="boldLi">width</span>  property represents the maximum audio player width. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"content/media/audio/01.mp3",
+			thumbnailPath:"content/media/thumbnails/audio1.jpg",
+			width:600,
+			description:"<p>Item description here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">Youtube type:</h4>
+		<p>To add a youtube video add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the youtube video url, the <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. The <span class="boldLi">width</span> and <span class="boldLi">height</span> properties represents the maximum video width and height. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"https://www.youtube.com/watch?v=QdITKPWozF0",
+			thumbnailPath:"content/media/thumbnails/youtube.jpg",
+			width:800,
+			height:600,
+			description:"<p>Item description here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">Vimeo type:</h4>
+		<p>To add a vimeo video add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the vimeo video url, the <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. The <span class="boldLi">width</span> and <span class="boldLi">height</span> properties represents the maximum video width and height. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"http://vimeo.com/34635906",
+			thumbnailPath:"content/media/thumbnails/vimeo.jpg",
+			width:400,
+			height:600,
+			description:"<p>Item description here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">Flash type:</h4>
+		<p>To add a flash swf file add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the flash swf path, the <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. The <span class="boldLi">width</span> and <span class="boldLi">height</span> properties represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"content/media/flash/fwd.swf",
+			thumbnailPath:"content/media/thumbnails/flash.jpg",
+			width:800,
+			height:600,
+			description:"<p>Item description here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">Google maps type:</h4>
+		<p>To add google maps add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the google maps url. The url can be created at <a href="https://developers.google.com/maps/documentation/embed/start" target="_blank">this link</a>, google provided a tool to create maps, just add your location and an embed code will be generated, from the embed code copy the src value and paste it as a value of the <span class="boldLi">url</span> property. The <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. The <span class="boldLi">width</span> and <span class="boldLi">height</span> properties represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"https://www.google.com/maps/embed/v1/place?q=Bulevardul+Dacia,+Bucharest,+Romania&key=...",
+			thumbnailPath:"content/media/thumbnails/maps.jpg",
+			width:800,
+			height:600,
+			description:"<p>Item description here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">HTML content type:</h4>
+		<p>To add a HTML content item add the code from below inside the current playlist. The <span class="boldLi">url</span> property must be set to <span class="boldLi">RL_HTML</span>, any type of HTML content can be added, please note that the HTML content type can't have a description. The <span class="boldLi">html</span> property represents the HTML content. The <span class="boldLi">width</span> and <span class="boldLi">height</span> properties represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span>.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"RL_HTML",
+			thumbnailPath:"content/media/thumbnails/html.jpg",
+			width:800,
+			height:600,
+			html:"<p class='white'>HTML content here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">AJAX content type:</h4>
+		<p>To add an AJAX content item add the code from below inside the current playlist. The <span class="boldLi">url</span> property must be set to <span class="boldLi">RL_AJAX:filePath</span>, the <span class="boldLi">filePath</span> represents the path of the file to load, usually this is a html or txt file. The <span class="boldLi">width</span> and <span class="boldLi">height</span> properties represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"RL_AJAX:content/test.html",
+			thumbnailPath:"content/media/thumbnails/ajax.jpg",
+			width:800,
+			height:600,
+		}
+		</pre>
+		<br>
+		<br>
+		<h4 class="bold">Iframe type:</h4>
+		<p>To add an iframe item add the code from below inside the current playlist. The <span class="boldLi">url</span> property represents the url of the page to load in the iframe, the <span class="boldLi">thumbnailPath</span> property represents the thumbnail path. The <span class="boldLi">width</span> and <span class="boldLi">height</span> properties represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">thumbnailPath</span> property or set <span class="boldLi">showThumbnails:"no"</span>also if you don't need a description remove the <span class="boldLi">description</span> property.</p>
+		<pre class="brush: js; html-script: true">
+		{
+			url:"http://www.webdesign-flash.ro/iframe.html",
+			thumbnailPath:"content/media/thumbnails/iframe.jpg",
+			width:800,
+			height:600,
+			description:"<p>Item description here</p>"
+		}
+		</pre>
+		<br>
+		<br>
+		<br>
+		
+		<h3 id="html"><strong>E) Setup HTML content playlist</strong> - <a href="#toc">top</a></h3>
+		<p>Please open with a text editor the minimal-skin-mixed-content.html file as reference.</p>
+		<p>In this section is explained how to setup  a html content playlist for the RL to display, please note that this content can be created at any time it just need to be present in the DOM when the RL show  method is called (for more info about the show method please read <a href="#show">Open / show Revolution Lightbox</a>). There are ten content types (image, video, audio, youtube, vimeo, flash, google maps, html, ajax and iframe)  that RL can display and they are explained in detail below in this section. To add / remove items in the playlist add or remove items depending of the type that you need. Below is the HTML content playlist with all supported types.</p>
+		<pre class="brush: js; html-script: true">
+		<!-- Mixed playlist  -->
+		<ul id="mixedPlaylist" style="display:none;">
+			<li data-url="content/media/images/1.jpg" data-thumbnail-path="content/media/thumbnails/image.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/videos/desktop.mp4,content/media/videos/mobile.mp4" data-poster-path="content/media/posters/video.jpg,content/media/posters/video-mobile.jpg" data-thumbnail-path="content/media/thumbnails/video2.jpg" data-width="600" data-height="450">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/audio/audio1.mp3" data-thumbnail-path="content/media/thumbnails/audio1.jpg" data-width="400">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="https://www.youtube.com/watch?v=9bZkp7q19f0" data-thumbnail-path="content/media/thumbnails/youtube.jpg"  data-width="1000" data-height="550">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="http://vimeo.com/50747914" data-thumbnail-path="content/media/thumbnails/vimeo.jpg" data-width="900" data-height="550">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/flash/fwd.swf" data-thumbnail-path="content/media/thumbnails/flash.jpg" data-width="600" data-height="450">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="https://www.google.com/maps/embed/v1/place?q=castelul%20hunedoara&key=..." data-thumbnail-path="content/media/thumbnails/maps.jpg" data-width="1100", data-height="650">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="RL_HTML" data-thumbnail-path="content/media/thumbnails/html.jpg" data-width="346" data-height="350">
+				<p class="white">HTML content here.</p>
+			</li>
+			<li data-url="RL_AJAX:content/ajax.html" data-thumbnail-path="content/media/thumbnails/ajax.jpg" data-width="900" data-height="650"></li>
+			<li data-url="http://www.webdesign-flash.ro/iframe.html" data-thumbnail-path="content/media/thumbnails/iframe.jpg" data-width="900" data-height="650">
+				<p>Item description here!</p>
+			</li>
+		</ul></pre>
+	
+		<p>As it can be seen in the image representation the playlist is created using <span class="boldLi">ul</span> and <span class="boldLi">li</span> html elements with some custom attributes, what is important to note is that the playlist must have an unique id, this id is required by RL when the show method is called (for more info about the show method please read <a href="#show">Open / show Revolution Lightbox</a>).</p>
+	
+		<h4 class="bold">Image type:</h4>
+		<p>To add an image add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the image path, the <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="content/media/images/1.jpg" data-thumbnail-path="content/media/thumbnails/image.jpg">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">Video (mp4) type:</h4>
+		<p>To add a video add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the video path, RL supports two video paths, one for desktop and one for mobile, this is useful if you want a large hd video for desktop and a smaller video version for mobile, the paths are separated by comma, the mobile video path is optional. The <span class="boldLi">data-poster-path</span> attribute represents the poster path, RL supports two poser paths, one for desktop and one for mobile, the paths are separated by comma, the mobile poster path is optional. The <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="content/media/videos/desktop.mp4,content/media/videos/mobile.mp4" data-poster-path="content/media/posters/video.jpg,content/media/posters/video-mobile.jpg" data-thumbnail-path="content/media/thumbnails/video2.jpg" data-width="600" data-height="450">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">Audio (mp3) type:</h4>
+		<p>To add a audio mp3 file add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the mp3 path, the <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. The <span class="boldLi">data-width</span> represents the maximum audio player width. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="content/media/audio/audio1.mp3" data-thumbnail-path="content/media/thumbnails/audio1.jpg" data-width="400">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">Youtube type:</h4>
+		<p>To add a youtube video add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the youtube video url, the <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. The <span class="boldLi">data-width</span> and <span class="boldLi">data-height</span> represents the maximum video width and height. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="content/media/audio/audio1.mp3" data-thumbnail-path="content/media/thumbnails/audio1.jpg" data-width="400">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">Vimeo type:</h4>
+		<p>To add a vimeo video add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the vimeo video url, the <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. The <span class="boldLi">data-width</span> and <span class="boldLi">data-height</span> represents the maximum video width and height. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="http://vimeo.com/50747914" data-thumbnail-path="content/media/thumbnails/vimeo.jpg" data-width="900" data-height="550">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">Flash type:</h4>
+		<p>To add a flash swf file add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the flash swf path, the <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. The <span class="boldLi">data-width</span> and <span class="boldLi">data-height</span> represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="content/media/flash/fwd.swf" data-thumbnail-path="content/media/thumbnails/flash.jpg" data-width="600" data-height="450">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">Google maps type:</h4>
+		<p>To add google maps add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the google maps url. The url can be created at <a href="https://developers.google.com/maps/documentation/embed/start" target="_blank">this link</a>, google provided a tool to create maps, just add your location and an embed code will be generated, from the embed code copy the src value and paste it as a value of the <span class="boldLi">data-url</span> attribute. The <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. The <span class="boldLi">data-width</span> and <span class="boldLi">data-height</span> represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="https://www.google.com/maps/embed/v1/place?q=castelul%20hunedoara&key=..." data-thumbnail-path="content/media/thumbnails/maps.jpg" data-width="1100", data-height="650">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">HTML content type:</h4>
+		<p>To add a HTML content item add the code from below inside the current playlist. The <span class="boldLi">data-url</span> must be set to <span class="boldLi">RL_HTML</span>, any type of HTML content can be added, please note that the HTML content type can't have a description. The <span class="boldLi">data-width</span> and <span class="boldLi">data-height</span> represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span>.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="RL_HTML" data-thumbnail-path="content/media/thumbnails/html.jpg" data-width="346" data-height="350">
+			<p class="white">HTML content here.</p>
+		</li></pre>
+		<br>
+		<br>
+		<h4 class="bold">AJAX content type:</h4>
+		<p>To add an AJAX content item add the code from below inside the current playlist. The <span class="boldLi">data-url</span> must be set to <span class="boldLi">RL_AJAX:filePath</span>, the <span class="boldLi">filePath</span> represents the path of the file to load, usually this is a html or txt file. The <span class="boldLi">data-width</span> and <span class="boldLi">data-height</span> represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span>, also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="RL_AJAX:content/ajax.html" data-thumbnail-path="content/media/thumbnails/ajax.jpg" data-width="900" data-height="650"></li></pre>
+		<br>
+		<br>
+		<h4 class="bold">Iframe type:</h4>
+		<p>To add an iframe item add the code from below inside the current playlist. The <span class="boldLi">data-url</span> attribute represents the url of the page to load in the iframe, the <span class="boldLi">data-thumbnail-path</span> attribute represents the thumbnail path. The <span class="boldLi">data-width</span> and <span class="boldLi">data-height</span> represents the maximum item width and height. If you don't need a thumbnail remove the <span class="boldLi">data-thumbnail-path</span> attribute or set <span class="boldLi">showThumbnails:"no"</span> also if you don't need description leave the inner html empty in this case remove the inner paragraph.</p>
+		<pre class="brush: js; html-script: true">
+		<li data-url="http://www.webdesign-flash.ro/iframe.html" data-thumbnail-path="content/media/thumbnails/iframe.jpg" data-width="900" data-height="650">
+			<p>Item description here!</p>
+		</li></pre>
+		<br>
+		<br>
+		<h3 id="sm"><strong>F) Setup Social Media Websites playlists</strong> - <a href="#toc">top</a></h3>
+		<h4 class="bold">YOUTUBE PLAYLISTS:</h4>
+		<p>Please open with a text editor any of the minimal or modern files from the start folder for reference.</p>
+		<p>RL can load and display playlists from youtube. Below is a representation, this is done by adding the youtube playlist url in the  <span class="boldLi">FWDRL.show(...)</span> method.</p>
+		<pre class="brush: js; html-script: true">
+		FWDRL.show('https://www.youtube.com/watch?v=7PCkvCPvDXk&list=PLFy9uG3bpsXYZKdfX_T_S_GitSPMSHVQY', 0);</pre>
+		<br><br>
+		<h4 class="bold">SOUNDCLOUD PLAYLISTS:</h4>
+		<p>Please open with a text editor any of the minimal or modern files from the start folder for reference.</p>
+		<p>RL can load and display playlists from Soundcloud. Below is a representation, this is done by adding the Soundcloud playlist url in the  <span class="boldLi">FWDRL.show(...)</span> method.</p>
+		<pre class="brush: js; html-script: true">
+		FWDRL.show('https://www.facebook.com/melinda.tomuta/media_set?set=a.922507177774914.100000469215443&type=3', 0);</pre>
+		<br><br>
+		<h4 class="bold">FLICKR ALBUMS:</h4>
+		<p>Please open with a text editor any of the minimal or modern files from the start folder for reference.</p>
+		<p>RL can load and display albums from Flickr. Below is a representation, this is done by adding the Flickr album url in the  <span class="boldLi">FWDRL.show(...)</span> method.</p>
+		<pre class="brush: js; html-script: true">
+		FWDRL.show('https://www.flickr.com/photos/coreyhayesphoto/albums/72157657424491573', 1);</pre>
+		<br><br>
+		<h4 class="bold">FACEBOOK ALBUMS:</h4>
+		<p>Please open with a text editor the <span class="boldLi">cv-facebook.html</span> file as reference.</p>
+		<p>RL can load and display albums from Facebook. Below is a representation, this is done by adding the Facebook playlist url in the  <span class="boldLi">FWDRL.show(...)</span> method.</p>
+		<pre class="brush: js; html-script: true">
+		FWDRL.show('https://www.facebook.com/melinda.tomuta/media_set?set=a.922507177774914.100000469215443&type=3', 0);</pre>
+		<p>Unfortunately loading Facebook albums is a bit more complicated, Facebook requires an access token that can only be retrived using their API using an app, so far so good but they made it so complicated then even for a developer it's really difficult to figure this out, they require the app to be reviewed and to send them print screens of the code and explanation of what it is doing plus there are users that have apps submited without a response it might take up to 3 months to get an answer. This is crazy and frankly we don't understand why they chose to make it so difficult to load a simple public album, however there is a workaround to get the access token that is explained <a href="http://stackoverflow.com/questions/12168452/long-lasting-fb-access-token-for-server-to-pull-fb-page-info" target="_blank">here</a> , we have used this tutorial to get an access token that never expires, please note that you have to create an app, how to do this is explained in the <a href="#share">Setup Facebook app</a>. Once the access token is retrived it must be added in the <span class="boldLi">facebook_access_token.txt</span> inside the <span class="boldLi">content</span> folder.<p>
+		
+		<h3 id="show"><strong>G) Open / show Revolution Lightbox</strong> - <a href="#toc">top</a></h3>
+		<p>Please open with a text editor the minimal-skin-mixed-content.html file as reference.</p>
+		<p>To show RL with your playlist the FWDRL.show(playlistId, startPosition, settingsObject) method must be called, this method has three parameters, the first is the playlist html element id if the playlist is of type html or the playlist object variable name if the playlist is of type JSON, the second parameters represents the item number to display starting from zero and the third is an object that allows to modify the RL visual and programmatic settings (please note that the second and third parameters are optional).</p>
+		
+		<p>Once you have created your playlist and setup the RL the show method can be called on a click event or any other event type. There is an example from the html file illustratedbelow, when a button is clicked the RL show method is called which in turn is showing the lighbox with the specified parameters.</p>
+		<pre class="brush: js; html-script: true">
+			<button onclick="FWDRL.show('mixedPlaylist', 0);">open lightbox with html playlist</button>
+			<button onclick="FWDRL.show('rlobj_mixedPlaylist', 1);">open lightbox with JSON playlist</button></pre>	
+		<p>For info about how to create JSON and HTML playlists please read <a href="#html">Setup  HTML content playlist</a> or <a href="#json">Setup  JSON content playlist</a></p>.
+		<br>
+		<br>
+		
+		<h3 id="source"><strong>H) Change lightbox settings at runtime</strong> - <a href="#toc">top</a></h3>
+		<p>Please open with a text editor the minimal-skin-mixed-content.html file as reference.</p>
+		<p>RL is starting with default settings that are specified in the constructor but it can be reconfigured at run time, for example you can change the background color or the item background color, or have different item background colors for all items.  This is done by passing a settings object as a third parameter in the RL show method (for more info about the show method please read <a href="#show">Open / show Revolution Lightbox</a>).</p>
+		<p>The configuration object must be declared as a variable on the window in a script tag and it can contain all constructor parameters settings except the one that that are highlighted in red, in the image below there is an example with a configuration object that is changing the background color and opacity and sets the buttons alignment to <span class="boldLi">out</span>.</p>
+		<pre class="brush: js; html-script: true">
+		//Change settings object
+		var props_obj = {
+			backgroundColor:"#0099FF",
+			backgroundOpacity:1,
+			buttonsAlignment:"out"
+		}</pre>	
+		<p>After the object is created it can be passed as a parameter to the show method to change the settings, for example when a button is pressed the RL show method is called  (examplebelow).</p>
+		<pre class="brush: js; html-script: true">
+		<button onclick="FWDRL.show('mixedPlaylist', 1, 'props_obj');">open lightbox with modified settings</button></pre>	
+
+		<h3 id="share"><strong>I) Setup Facebook app (required for loading Facebook albums) </strong> - <a href="#toc">top</a></h3>
+		<p>In order for the share button button to function a Facebook app key is required, this key is obtained by setting up a Facebook app as follows:</p>
+
+		<ul>
+			<li> Login into your Facebook account.</li>
+			<li> Open the following link  https://developers.facebook.com/apps</li>
+			<li> From the top bar menu select  <span class="boldLi">My Apps - > Add New App</span> then select Website and set the app name.</li>
+			<li> After this the app can be found by oppening the My Apps from the menu. In the Settings section set the website url where the grid is used, example in the image below, also in this screen the App ID and App Secret can be seen.</li>
+		</ul>
+		<img src="assets/images/firstFacebookScreen.jpg"/>
+		<ul>
+			<li>Last step is to select from the left menu bar <span class="boldLi">Status  & Review</span>, in this page there is a button that is referring to "Do you want to make this app and all its live features available to the general public?" that must be set to yes, examplebelow.</li>
+		</ul>
+		<img src="assets/images/facebookYesButton.jpg"/>
+		
+		<p>One important thing to note is that the Revolution Lightbox domain name must be identical with the url passed to the Facebook app, for example if the Revolution Lightbox domain name is <span class="boldLi">http://www.some-domain.com</span> and the Facebook app is configured with the url/domain name <span class="boldLi">http://some-domain.com</span> it will not work, both url /  domain names must be exactly the same.</p>
+		
+		<h3 id="api"><strong>J) API specifications</strong> - <a href="#toc">top</a></h3>
+		<p>Inside the start file there is HTML file called API-example.html, open it with a text editor as reference. Below is a table with all API events.</p>
+		
+		<p CLASS="largeLabel1">Event listeners:</p>
+			<table>
+			  <tr class="firstTr">
+				<th class="fistTd">Event</td>
+				<th class="secondTd">Prefix</td>
+				<th class="thirdTd">Description</td>
+			  </tr>
+			  <tr>
+				<td><span class="mainProp">showStart</span></td>
+				<td><span class="inlineSpan">FWDRL.SHOW_START</span></td>
+				<td class="lastCol">Dispatched when RL show animation starts.</td>
+			  </tr>
+			  <tr>
+				<td><span class="mainProp">showComplete</span></td>
+				<td><span class="inlineSpan">FWDRL.SHOW_COMPLETE</span></td>
+				<td class="lastCol">Dispatched when RL show animation is complete.</td>
+			  </tr>
+			  <tr>
+				<td><span class="mainProp">hideStart</span></td>
+				<td><span class="inlineSpan">FWDRL.HIDE_START</span></td>
+				<td class="lastCol">Dispatched when RL hide animation starts.</td>
+			  </tr>
+			  <tr>
+				<td><span class="mainProp">hideComplete</span></td>
+				<td><span class="inlineSpan">FWDRL.HIDE_COMPLETE</span></td>
+				<td class="lastCol">Dispatched when RL is hide animation is complete.</td>
+			  </tr>
+			  <tr>
+				<td><span class="mainProp">update</span></td>
+				<td><span class="inlineSpan">FWDRL.UPDATE</span></td>
+				<td class="lastCol">Dispatched when RL item is changing. This event also has a parameter curId that represents the current item id.</td>
+			  </tr>
+		</table>
+		
+        <h3 id="credits"><strong>K) Sources and Credits</strong> - <a href="#toc">top</a></h3>
+        <p>This plugin was made by Tibi from FWD (FWDesign) <a href="http://www.webdesign-flash.ro">Future Web Design</a>, for more information and support contact us at <a href="mailto:youremail@yourdomain.com">tibi_diablo@yahoo.com</a></p>
+		<p>Once again, thank you so much for purchasing this item. As I said at the beginning, I'd be glad to help you if you have any questions regarding this Revolution Lightbox and I'll do my best to assist.</p> 
+		
+		<p class="append-bottom alt large"><strong>FWDesign</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
+
+</script>

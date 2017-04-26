@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Revolution Lightbox</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1 user-scalable=no" />
+		
+		<!--  Import required css and js files  -->
+		<link rel="stylesheet" type="text/css"  href="content/global.css"/>
+		<script type="text/javascript" src="java/FWDRL.js"></script>
+		
+		<!-- Setup RL-->
+		<script type="text/javascript">
+			FWDRLUtils.onReady(function(){
+				new FWDRL({	
+					//main settings
+					mainFolderPath:"content",
+					skinPath:"minimal_skin_dark",
+					facebookAppId:"213684265480896",
+					rightClickContextMenu:"default",
+					buttonsAlignment:"in",
+					useDeepLinking:"yes",
+					useAsModal:"no",
+					slideShowAutoPlay:"no",
+					addKeyboardSupport:"yes",
+					showCloseButton:"yes",
+					showShareButton:"yes",
+					showZoomButton:"yes",
+					showSlideShowButton:"yes",
+					showSlideShowAnimation:"yes",
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"yes",
+					buttonsHideDelay:3,
+					slideShowDelay:4,
+					defaultItemWidth:800,
+					defaultItemHeight:500,
+					itemOffsetHeight:50,
+					spaceBetweenButtons:1,
+					buttonsOffsetIn:2,
+					buttonsOffsetOut:5,
+					itemBorderSize:4,
+					itemBorderRadius:0,
+					backgroundOpacity:.8,
+					itemBoxShadow:"none",
+					itemBackgroundColor:"#333333",
+					itemBorderColor:"#FFFFFF",
+					backgroundColor:"#000000",
+					//thumbnails settings
+					showThumbnails:"yes",
+					showThumbnailsHideOrShowButton:"yes",
+					showThumbnailsByDefault:"yes",
+					showThumbnailsOverlay:"yes",
+					showThumbnailsSmallIcon:"yes",
+					thumbnailsHoverEffect:"scale",
+					thumbnailsImageHeight:80,
+					thumbnailsBorderSize:4,
+					thumbnailsBorderRadius:0,
+					spaceBetweenThumbnailsAndItem:0,
+					thumbnailsOffsetBottom:0,
+					spaceBetweenThumbnails:2,
+					thumbnailsOverlayOpacity:.6,
+					thumbnailsOverlayColor:"#000000",
+					thumbnailsBorderNormalColor:"#FFFFFF",
+					thumbnailsBorderSelectedColor:"#FFFFFF",
+					//description settings
+					showDescriptionButton:"yes",
+					showDescriptionByDefault:"yes",
+					descriptionWindowAnimationType:"motion",
+					descriptionWindowPosition:"bottom",
+					descriptionWindowBackgroundColor:"#FFFFFF",
+					descriptionWindowBackgroundOpacity:.95,
+					//video & audio players settings
+					useVideo:"yes",
+					useAudio:"yes",
+					videoShowFullScreenButton:"yes",
+					addVideoKeyboardSupport:"yes",
+					nextVideoOrAudioAutoPlay:"yes",
+					videoAutoPlay:"no",
+					videoLoop:"no",
+					audioAutoPlay:"no",
+					audioLoop:"no",
+					videoControllerHideDelay:3,
+					videoControllerHeight:41,
+					audioControllerHeight:44,
+					startSpaceBetweenButtons:7,
+					vdSpaceBetweenButtons:9,
+					mainScrubberOffestTop:14,
+					scrubbersOffsetWidth:1,
+					audioScrubbersOffestTotalWidth:4,
+					timeOffsetLeftWidth:5,
+					timeOffsetRightWidth:3,
+					volumeScrubberWidth:80,
+					volumeScrubberOffsetRightWidth:0,
+					videoControllerBackgroundColor:"#FFFFFF",
+					videoPosterBackgroundColor:"#0099FF",
+					audioControllerBackgroundColor:"#FFFFFF",
+					timeColor:"#000000"
+				});
+				
+				FWDRL.addListener(FWDRL.SHOW_START, showStartHandler);
+				FWDRL.addListener(FWDRL.SHOW_COMPLETE, showCompleteHandler);
+				FWDRL.addListener(FWDRL.HIDE_START, hideStartHandler);
+				FWDRL.addListener(FWDRL.HIDE_COMPLETE, hideCompleteHandler);
+				FWDRL.addListener(FWDRL.UPDATE, updateHandler);
+			});
+			
+
+			function showStartHandler(){
+				console.log("show start");
+			}
+			
+			function showCompleteHandler(){
+				console.log("show complete");
+			}
+			
+			function hideStartHandler(){
+				console.log("hide start");
+			}
+			
+			function hideCompleteHandler(){
+				console.log("hide complete");
+				location.reload();
+			}
+			
+			function updateHandler(e){
+				console.log("update current item with id " + e.curId);
+			}
+		</script>
+	
+	</head>
+
+	<body style="background-color:#555555;">
+		
+		<button onclick="FWDRL.show('gallery1', 0);">open lightbox with html playlist</button>
+		
+		<!-- Gallery  playlist -->
+		<ul id="gallery1" style="display:none;">
+			<li data-url="content/media/images/1.jpg" data-thumbnail-path="content/media/thumbnails/1.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/2.jpg" data-thumbnail-path="content/media/thumbnails/2.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/3.jpg" data-thumbnail-path="content/media/thumbnails/3.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/4.jpg" data-thumbnail-path="content/media/thumbnails/4.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/5.jpg" data-thumbnail-path="content/media/thumbnails/5.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/6.jpg" data-thumbnail-path="content/media/thumbnails/6.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/7.jpg" data-thumbnail-path="content/media/thumbnails/7.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/8.jpg" data-thumbnail-path="content/media/thumbnails/8.jpg">
+				<p>Item description here!</p>
+			</li>
+		</ul>
+	</body>
+	
+</html>
+
+
+ 	
+

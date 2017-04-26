@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Revolution Lightbox</title>
+		
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1 user-scalable=no" />
+		
+		<!--  Import required css and js files  -->
+		<link rel="stylesheet" type="text/css"  href="content/global.css"/>
+		<script type="text/javascript" src="java/FWDRL.js"></script>
+		
+		<!-- Setup RL-->
+		<script type="text/javascript">
+			FWDRLUtils.onReady(function(){
+				new FWDRL({	
+					//main settings
+					mainFolderPath:"content",
+					skinPath:"modern_skin_dark",
+					facebookAppId:"213684265480896",
+					rightClickContextMenu:"default",
+					buttonsAlignment:"in",
+					useDeepLinking:"yes",
+					useAsModal:"no",
+					slideShowAutoPlay:"no",
+					addKeyboardSupport:"yes",
+					showCloseButton:"yes",
+					showShareButton:"yes",
+					showZoomButton:"yes",
+					showSlideShowButton:"yes",
+					showSlideShowAnimation:"yes",
+					showNextAndPrevButtons:"yes",
+					showNextAndPrevButtonsOnMobile:"yes",
+					buttonsHideDelay:10,
+					slideShowDelay:4,
+					defaultItemWidth:640,
+					defaultItemHeight:480,
+					itemOffsetHeight:50,
+					spaceBetweenButtons:8,
+					buttonsOffsetIn:5,
+					buttonsOffsetOut:5,
+					itemBorderSize:4,
+					itemBorderRadius:2,
+					backgroundOpacity:.7,
+					itemBoxShadow:"none",
+					itemBackgroundColor:"#333333",
+					itemBorderColor:"#FFFFFF",
+					backgroundColor:"#000000",
+					//thumbnails settings
+					showThumbnails:"yes",
+					showThumbnailsHideOrShowButton:"yes",
+					showThumbnailsByDefault:"yes",
+					showThumbnailsOverlay:"yes",
+					showThumbnailsSmallIcon:"yes",
+					thumbnailsHoverEffect:"scale",
+					thumbnailsImageHeight:80,
+					thumbnailsBorderSize:4,
+					thumbnailsBorderRadius:0,
+					spaceBetweenThumbnailsAndItem:0,
+					thumbnailsOffsetBottom:0,
+					spaceBetweenThumbnails:2,
+					thumbnailsOverlayOpacity:.6,
+					thumbnailsOverlayColor:"#000000",
+					thumbnailsBorderNormalColor:"#FFFFFF",
+					thumbnailsBorderSelectedColor:"#FFFFFF",
+					//description settings
+					descriptionWindowPosition:"bottom",
+					showDescriptionButton:"yes",
+					showDescriptionByDefault:"no",
+					descriptionWindowAnimationType:"motion",
+					descriptionWindowBackgroundColor:"#FFFFFF",
+					descriptionWindowBackgroundOpacity:.9,
+					//video & audio players settings
+					useVideo:"yes",
+					useAudio:"yes",
+					videoShowFullScreenButton:"yes",
+					addVideoKeyboardSupport:"yes",
+					nextVideoOrAudioAutoPlay:"yes",
+					videoAutoPlay:"no",
+					videoLoop:"no",
+					audioAutoPlay:"no",
+					audioLoop:"no",
+					videoControllerHideDelay:3,
+					videoControllerHeight:41,
+					audioControllerHeight:44,
+					startSpaceBetweenButtons:7,
+					vdSpaceBetweenButtons:9,
+					mainScrubberOffestTop:14,
+					scrubbersOffsetWidth:1,
+					audioScrubbersOffestTotalWidth:4,
+					timeOffsetLeftWidth:5,
+					timeOffsetRightWidth:3,
+					volumeScrubberWidth:80,
+					volumeScrubberOffsetRightWidth:0,
+					videoControllerBackgroundColor:"#FFFFFF",
+					videoPosterBackgroundColor:"#0099FF",
+					audioControllerBackgroundColor:"#FFFFFF",
+					timeColor:"#000000"
+				});
+			});
+		</script>
+		
+		<script>
+			//Change settings object
+			var props_obj = {
+				backgroundColor:"#0099FF",
+				backgroundOpacity:1,
+				buttonsAlignment:"out"
+			}
+			
+			//JSON playlist object
+			var rlobj_gallery1 = {
+				playlistItems:[
+				{
+					url:"content/media/images/1.jpg",
+					thumbnailPath:"content/media/thumbnails/1.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/images/2.jpg",
+					thumbnailPath:"content/media/thumbnails/2.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/images/3.jpg",
+					thumbnailPath:"content/media/thumbnails/3.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/images/4.jpg",
+					thumbnailPath:"content/media/thumbnails/4.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/images/5.jpg",
+					thumbnailPath:"content/media/thumbnails/5.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/images/6.jpg",
+					thumbnailPath:"content/media/thumbnails/6.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/images/7.jpg",
+					thumbnailPath:"content/media/thumbnails/7.jpg",
+					description:"<p>Item description here.</p>"
+				},
+				{
+					url:"content/media/images/8.jpg",
+					thumbnailPath:"content/media/thumbnails/8.jpg",
+					description:"<p>Item description here.</p>"
+				}]
+			}
+			
+			//JSON single item object
+			var rlobj_singleItem = {
+				playlistItems:[
+				{
+					url:"content/media/images/1.jpg",
+					thumbnailPath:"content/media/thumbnails/image.jpg"
+				}]
+			}
+		</script>
+	</head>
+
+	<body style="background-color:#CCCCCC;">
+		
+		<button onclick="FWDRL.show('gallery1', 0);">open lightbox with html playlist</button>
+		<button onclick="FWDRL.show('rlobj_gallery1', 1);">open lightbox with JSON playlist</button>
+		<button onclick="FWDRL.show('gallery1', 2, 'props_obj');">open lightbox with modified settings</button>
+		<button onclick="FWDRL.show('https://www.facebook.com/melinda.tomuta/media_set?set=a.922507177774914.100000469215443&type=3', 0);">open facebook album</button>
+		<button onclick="FWDRL.show('https://www.flickr.com/photos/coreyhayesphoto/albums/72157657424491573', 0);">open flickr album</button>
+		<button onclick="FWDRL.show('https://www.youtube.com/watch?v=7PCkvCPvDXk&list=PLFy9uG3bpsXYZKdfX_T_S_GitSPMSHVQY', 0);">open youtube album</button>
+		<button onclick="FWDRL.show('https://soundcloud.com/theworldofnick/sets/trap', 0);">open soundcloud album</button>
+		<p></p>
+		<a href="javascript:void(0)" onclick="FWDRL.show('gallery1', 3);">open lightbox from a a href</a>
+		<p></p>
+		<img src="img.jpg" onclick="FWDRL.show('gallery1', 4);"/>
+		
+		<!-- Gallery  playlist -->
+		<ul id="gallery1" style="display:none;">
+			<li data-url="content/media/images/1.jpg" data-thumbnail-path="content/media/thumbnails/1.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/2.jpg" data-thumbnail-path="content/media/thumbnails/2.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/3.jpg" data-thumbnail-path="content/media/thumbnails/3.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/4.jpg" data-thumbnail-path="content/media/thumbnails/4.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/5.jpg" data-thumbnail-path="content/media/thumbnails/5.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/6.jpg" data-thumbnail-path="content/media/thumbnails/6.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/7.jpg" data-thumbnail-path="content/media/thumbnails/7.jpg">
+				<p>Item description here!</p>
+			</li>
+			<li data-url="content/media/images/8.jpg" data-thumbnail-path="content/media/thumbnails/8.jpg">
+				<p>Item description here!</p>
+			</li>
+		</ul>
+		
+		<!-- Single item  -->
+		<ul id="singleItem" style="display:none;">
+			<li data-url="content/media/images/1.jpg">
+				<p>Item description here!</p>
+			</li>
+		</ul>
+	
+	</body>
+	
+</html>
+
+
+ 	
+

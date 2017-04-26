@@ -1,0 +1,37 @@
+/* CSS style for RL description window and html content */
+div, p{
+	font-family:Arial;
+}
+
+.white{
+	color:#FFFFFF;
+}
+
+/* Soundcloud description */
+.FWDRLSoundCloudDescription{
+	background-color:#FFFFFF !important;
+	color:#000000 !important;
+	margin:0px !important;
+	padding:12px !important;
+}
+
+.FWDRLFlickrDescription{
+	background-color:#FFFFFF !important;
+	color:#000000 !important;
+	margin:0px !important;
+	padding:12px !important;
+}
+
+.FWDRLYoutubeDescription{
+	background-color:#FFFFFF !important;
+	color:#000000 !important;
+	margin:0px !important;
+	padding:12px !important;
+}
+
+.FWDRLFacebookDescription{
+	background-color:#FFFFFF !important;
+	color:#000000 !important;
+	margin:0px !important;
+	padding:12px !important;
+}
