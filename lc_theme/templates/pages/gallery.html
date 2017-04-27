@@ -5,19 +5,6 @@
 {% block extra_head %}
 	{{ block.super }}
 	<script src="/static/js/jquery.unveil.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-		  //$("img").unveil(800);
-		  
-		  $("#id_btn_all").click();
-
-		  $("img").unveil(200, function() {
-			  $(this).load(function() {
-				$("#id_btn_all").click();
-			  });
-		  });
-		});
-	</script>
 {% endblock %}
 {% block extra_css %}
 <!-- ISOTOPE -->
@@ -191,7 +178,7 @@ margin-right: 0;}
 						       				<div class="grid-item image_gallery {{ image.description }}">
 			       								<span style="display:none;">{{ image.description }}</span>
 				                        		<a href="javascript:getFilteredImages('{{image.file.url}}');" class='nch-lightbox' rel='mygallery' data-duration="3000" data-title="{{ image.description }}" data-info="extrainfo">
-					       							<img src="/static/img/loading.gif" data-src="{{image.file.url}}" width="{{ image.width }}" height="{{ image.height }}">
+					       							<img src="/static/img/blank.gif" data-src="{{image.file.url}}" width="{{ image.width }}" height="{{ image.height }}">
 												<figcaption></figcaption>
 					       						</a>
 	       									</div>
@@ -353,5 +340,19 @@ function debounce( fn, threshold ) {
 	</script>
 
 <!-- Codecanion LightBox -->
+
+	<script type="text/javascript">
+		$(window).load(function() {
+		  //$("img").unveil(800);
+		  
+		  //$("#id_btn_all").click();
+
+		  $("img").unveil(200, function() {
+			  $(this).load(function() {
+				$("button.is-checked").click();
+			  });
+		  });
+		});
+	</script>
 
 {% endblock %}
